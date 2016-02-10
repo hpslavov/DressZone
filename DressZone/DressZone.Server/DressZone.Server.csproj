@@ -296,13 +296,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DressZone.Context\DressZone.Context.csproj">
+      <Project>{f0068bea-01b1-4554-9a5c-93d11080cc2e}</Project>
+      <Name>DressZone.Context</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DressZone.Models\DressZone.Models.csproj">
       <Project>{13d0c6c7-e143-439d-8b6a-38573553b93b}</Project>
       <Name>DressZone.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DressZoneDbContext\DressZone.Context.csproj">
-      <Project>{6557e9b2-9f8f-42b0-a00a-14e04d51345a}</Project>
-      <Name>DressZone.Context</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

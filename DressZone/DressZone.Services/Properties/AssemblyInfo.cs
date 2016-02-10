@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DressZoneDbContext")]
+[assembly: AssemblyTitle("DressZone.Services")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DressZoneDbContext")]
+[assembly: AssemblyProduct("DressZone.Services")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6557e9b2-9f8f-42b0-a00a-14e04d51345a")]
+[assembly: Guid("3c108986-0dfe-47b1-b0de-e24d593c6b9e")]
 
 // Version information for an assembly consists of the following four values:
 //

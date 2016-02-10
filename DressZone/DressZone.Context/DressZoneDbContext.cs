@@ -1,7 +1,7 @@
 ﻿namespace DressZone.Context
 {
-    using DressZone.Models.Account;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Models.Account;
 
     public class DressZoneDbContext : IdentityDbContext<User>
     {
