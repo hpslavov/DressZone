@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Container -->
+<div class="container">
+
+    <div class="six columns centered">
+
+        <ul class="tabs-nav my-account">
+            <li class="">
+                @Ajax.ActionLink("Login", "Login", "Account", new AjaxOptions
+           {
+               UpdateTargetId = "tabs-container",
+               InsertionMode = InsertionMode.Replace
+           })
+            </li>
+            <li>
+                @Ajax.ActionLink("Register", "Register", "Account", new AjaxOptions
+       {
+           UpdateTargetId = "tabs-container",
+           InsertionMode = InsertionMode.Replace
+       })
+            </li>
+        </ul>
+
+        <div class="tabs-container">
+
+        </div>
+    </div>
+</div>
+
+<div class="margin-top-50"></div>
+
