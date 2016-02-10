@@ -1,0 +1,63 @@
+﻿@using DressZone.Server.Models
+@model LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login" }))
+{
+    @Html.AntiForgeryToken()
+    <p class="form-row form-row-wide">
+        <label for="username">Username or Email Address: <span class="required">*</span></label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "input-text" })
+    </p>
+
+    <p class="form-row form-row-wide">
+        <label for="password">Password: <span class="required">*</span></label>
+        @Html.TextBoxFor(m => m.Password, new { @class = "input-text", type = "password" })
+    </p>
+
+        <p class="form-row">
+            <input type="submit" class="button" value="Login" />
+
+            <label for="rememberme" class="rememberme">
+                <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember Me
+            </label>
+        </p>
+
+        <p class="lost_password">
+            <a href="#">Lost Your Password?</a>
+        </p>
+}
+
+
+@*<form method="post" class="login">
+
+
+        <p class="form-row form-row-wide">
+            <label for="username">Username or Email Address: <span class="required">*</span></label>
+            <input type="text" class="input-text" name="username" id="username" value="" />
+        </p>
+
+        <p class="form-row form-row-wide">
+            <label for="password">Password: <span class="required">*</span></label>
+            <input class="input-text" type="password" name="password" id="password" />
+        </p>
+
+        <p class="form-row">
+            <input type="submit" class="button" name="login" value="Login" />
+
+            <label for="rememberme" class="rememberme">
+                <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember Me
+            </label>
+        </p>
+
+        <p class="lost_password">
+            <a href="#">Lost Your Password?</a>
+        </p>
+
+
+    </form>*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
