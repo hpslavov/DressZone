@@ -1,4 +1,6 @@
-﻿@{
+﻿@using DressZone.Server.Models
+@model LoginViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!-- Container -->
@@ -7,25 +9,13 @@
     <div class="six columns centered">
 
         <ul class="tabs-nav my-account">
-            <li class="">
-                @Ajax.ActionLink("Login", "Login", "Account", new AjaxOptions
-           {
-               UpdateTargetId = "tabs-container",
-               InsertionMode = InsertionMode.Replace
-           })
+            <li class="active">
+                @Html.ActionLink("Login", "Login","Account")
             </li>
-            <li>
-                @Ajax.ActionLink("Register", "Register", "Account", new AjaxOptions
-       {
-           UpdateTargetId = "tabs-container",
-           InsertionMode = InsertionMode.Replace
-       })
+            <li class="active">
+                @Html.ActionLink("Register", "Register", "Account")
             </li>
         </ul>
-
-        <div class="tabs-container">
-
-        </div>
     </div>
 </div>
 
