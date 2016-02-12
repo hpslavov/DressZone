@@ -1,8 +1,13 @@
-﻿using System;
+﻿using DressZone.Context.Contracts;
+using DressZone.Models.Shop;
+using DressZone.Repository.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DressZone.Server.Models;
+using DressZone.Server.Infrastructure.Mapping.Contracts;
 
 namespace DressZone.Server.Controllers
 {

@@ -1,14 +1,19 @@
 ﻿namespace DressZone.Context
 {
+    using Contracts;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models.Account;
     using Models.Shop;
     using System.Data.Entity;
-    public class DressZoneDbContext : IdentityDbContext<User>
+    using System.Linq;
+    public class DressZoneDbContext : IdentityDbContext<User>, IDressZoneDbContext
     {
+        private IQueryable<User> dbUsers;
+
         public DressZoneDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            this.dbUsers = this.Users;
         }
 
         public static DressZoneDbContext Create()
@@ -41,5 +46,11 @@
         public virtual IDbSet<Cart> Carts { get; set; }
 
         public virtual IDbSet<Shipping> Shippings { get; set; }
+
+        public IQueryable<User> DbUsers
+        {
+            get { return this.Users; }
+            set { this.dbUsers = value; }
+        }
     }
 }

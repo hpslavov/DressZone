@@ -1,6 +1,7 @@
 ﻿namespace DressZone.Repository
 {
     using Context;
+    using Context.Contracts;
     using DressZone.Repository.Contracts;
     using Models.Shop.Common;
     using System;
@@ -8,9 +9,9 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class GenericRepository<T> : IRepository<T> where T : BaseModel
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseModel
     {
-        public GenericRepository(DressZoneDbContext context)
+        public GenericRepository(IDressZoneDbContext context)
         {
             if (context == null)
             {
@@ -23,7 +24,7 @@
 
         protected IDbSet<T> DbSet { get; set; }
 
-        protected DressZoneDbContext Context { get; set; }
+        protected IDressZoneDbContext Context { get; set; }
 
         public virtual IQueryable<T> All()
         {
