@@ -23,7 +23,5 @@
         void Detach(T entity);
 
         int SaveChanges();
-
-        Task<int> SaveChangesAsync();
     }
 }

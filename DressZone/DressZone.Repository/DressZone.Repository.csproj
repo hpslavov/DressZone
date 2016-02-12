@@ -70,6 +70,10 @@
       <Project>{f0068bea-01b1-4554-9a5c-93d11080cc2e}</Project>
       <Name>DressZone.Context</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DressZone.Models\DressZone.Models.csproj">
+      <Project>{13d0c6c7-e143-439d-8b6a-38573553b93b}</Project>
+      <Name>DressZone.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

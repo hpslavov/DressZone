@@ -38,12 +38,45 @@ namespace DressZone.Context.Migrations
                 {
                     UserName = "slavov.hristo@gmail.com",
                     Email = "slavov.hristo@gmail.com",
-                    PasswordHash = passHasher.HashPassword("ickata")
+                    PasswordHash = passHasher.HashPassword("ickata"),
+                    CreatedOn = DateTime.Now
                 };
 
                 manager.Create(adminUser);
                 manager.AddToRole(adminUser.Id, "Admin");
             }
+
+            if (!context.GenderTypes.Any(g => g.Name == "Male"))
+            {
+                var seeder = new SeedData();
+                foreach (var gender in seeder.GenderTypes)
+                {
+                    context.GenderTypes.Add(gender);
+                }
+
+                foreach (var size in seeder.Sizes)
+                {
+                    context.Sizes.Add(size);
+
+                }
+
+                foreach (var color in seeder.Colors)
+                {
+                    context.Colors.Add(color);
+                }
+
+                foreach (var shipping in seeder.ShippingTypes)
+                {
+                    context.Shippings.Add(shipping);
+                }
+
+                foreach (var category in seeder.Categories)
+                {
+                    context.Categories.Add(category);
+                }
+            }
+
+           
         }
     }
 }
