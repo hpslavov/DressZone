@@ -1,27 +1,31 @@
 ﻿namespace DressZone.Repository.Contracts
 {
+    using Models.Account;
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
 
     public interface IGenericRepository<T> : IDisposable where T : class
     {
-        IQueryable<T> All();
+        
+            IQueryable<T> All();
 
-        T GetById(object id);
+            T GetById(object id);
 
-        void Add(T entity);
+            void Add(T entity);
 
-        void Update(T entity);
+            void Update(T entity);
 
-        void Delete(T entity);
+            void Delete(T entity);
 
-        void Delete(object id);
+            void Delete(object id);
 
-        T Attach(T entity);
+            T Attach(T entity);
 
-        void Detach(T entity);
+            void Detach(T entity);
 
-        int SaveChanges();
+            int SaveChanges();
+
     }
 }

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace DressZone.Server.Areas.Admin.Models.ViewModels
 {
-    public class AllCategoriesViewModel: IMapFrom<CategoryImage>
+    public class AllCategoriesViewModel : IMapFrom<Category>
     {
-        public string CategoryName { get; set; }
-        public string OriginalFileName { get; set; }
-       
+        public string Name { get; set; }
+        public string FrontImageName { get; set; }
+        public string Description { get; set; }
     }
 }

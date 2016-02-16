@@ -70,9 +70,21 @@ namespace DressZone.Context.Migrations
                     context.Shippings.Add(shipping);
                 }
 
-                foreach (var category in seeder.Categories)
+                
+
+                foreach (var catImage in seeder.CategoryFrontImages)
                 {
-                    context.Categories.Add(category);
+                    context.CategoryImages.Add(catImage);
+
+                    foreach (var category in seeder.Categories)
+                    {
+                        if (category.Name == catImage.CategoryName)
+                        {
+                            category.FrontImageName = catImage.FileName;
+                            category.Images.Add(catImage);
+                        }
+                        context.Categories.Add(category);
+                    }
                 }
             }
 

@@ -32,12 +32,18 @@ namespace DressZone.Services.Admin
             return category;
         }
 
-        public void CreateCategory(Category categoryToAdd)
+        public void CreateCategory(Category categoryToAdd,List<CategoryImage> images)
         {
+            categoryToAdd.Images = images;
             this.categoryRepo.Add(categoryToAdd);
             this.categoryRepo.SaveChanges();
         }
 
+        public void EditCategory(Category categoryToUpdate)
+        {
+            this.categoryRepo.Update(categoryToUpdate);
+            this.categoryRepo.SaveChanges();
+        }
 
 
     }

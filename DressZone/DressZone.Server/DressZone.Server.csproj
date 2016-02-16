@@ -410,6 +410,7 @@
     <Content Include="Areas\Admin\Views\Categories\All.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\EditFrontImage.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditCategory.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

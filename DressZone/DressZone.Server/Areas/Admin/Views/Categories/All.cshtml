@@ -33,11 +33,11 @@
 
                 <a href="#" class="grid-item-image">
                     <div class="dynamic-portfolio-holder">
-                        <img src="~/images/Uploaded/@cat.OriginalFileName" alt="" />
+                        <img src="~/images/Uploaded/@cat.FrontImageName" alt="" />
                         <div class="hover-cover"></div>
                         <div class="hover-icon"></div>
                         <div class="hover-desc">
-                            <h5>@cat.CategoryName</h5>
+                            <h5>@cat.Name</h5>
                             <span>Clothing</span>
                         </div>
                     </div>
@@ -45,50 +45,11 @@
                 <div class="og-expander">
                     <div class="flexslider gridslider">
                         <ul class="slides">
-                            <li><img src="~/images/Uploaded/@cat.OriginalFileName" alt=""></li>
+                            <li><img src="~/images/Uploaded/@cat.FrontImageName" alt=""></li>
                         </ul>
                     </div>
-
-                    <span class="og-close"></span>
-                    <div class="og-details">
-                        <h3>@cat.CategoryName</h3>
-                        <p>Description</p>
-                        <!-- Share Buttons -->
-                        <div class="share-buttons">
-                            <ul>
-                                <li><a href="#">Share</a></li>
-                                <li class="share-facebook"><a href="#">Facebook</a></li>
-                                <li class="share-twitter"><a href="#">Twitter</a></li>
-                                <li class="share-gplus"><a href="#">Google Plus</a></li>
-                                <li class="share-pinit"><a href="#">Pin It</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
+                    @Html.Partial("_EditCategory",cat)
                 </div>
-                @*<div class="og-expander">
-                    <div class="flexslider gridslider">
-                        <ul class="slides">
-                            <li><img src="" alt=""></li>
-                        </ul>
-                    </div>
-
-                    <span class="og-close"></span>
-                    <div class="og-details">
-                        <h3>@cat.CategoryName</h3>
-
-                        <!-- Share Buttons -->
-                        <div class="share-buttons">
-                            <ul>
-                                <li class="share-pinit" style="display:block"><a href="#">Edit</a></li>
-                                <li class="share-pinit" style="display:block">@Html.ActionLink("Change Front Picture", "EditFrontImage", "Categories", new { area = "Admin", category = @cat.CategoryName }, null)</li>
-                                <li class="share-pinit" style="display:block"><a href="#">Add Images</a></li>
-                                <li class="share-pinit" style="display:block"><a href="#">Change Description</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>*@
             </li>
         }
     </ul>

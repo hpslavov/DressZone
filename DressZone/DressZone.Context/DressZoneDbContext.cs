@@ -8,17 +8,20 @@
     using System.Linq;
     public class DressZoneDbContext : IdentityDbContext<User>, IDressZoneDbContext
     {
-        private IQueryable<User> dbUsers;
-
         public DressZoneDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            this.dbUsers = this.Users;
+            
         }
 
         public static DressZoneDbContext Create()
         {
             return new DressZoneDbContext();
+        }
+
+        public IDbSet<User> GetAllUsers()
+        {
+            return this.Users;
         }
 
         public virtual IDbSet<GenderType> GenderTypes { get; set; }
@@ -47,10 +50,5 @@
 
         public virtual IDbSet<Shipping> Shippings { get; set; }
 
-        public IQueryable<User> DbUsers
-        {
-            get { return this.Users; }
-            set { this.dbUsers = value; }
-        }
     }
 }

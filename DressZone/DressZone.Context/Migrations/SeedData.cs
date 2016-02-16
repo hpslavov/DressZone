@@ -11,6 +11,7 @@
         public ICollection<Color> Colors;
         public ICollection<GenderType> GenderTypes;
         public ICollection<Shipping> ShippingTypes;
+        public ICollection<CategoryImage> CategoryFrontImages;
 
         public SeedData()
         {
@@ -19,11 +20,13 @@
             this.Colors = new List<Color>();
             this.GenderTypes = new List<GenderType>();
             this.ShippingTypes = new List<Shipping>();
+            this.CategoryFrontImages = new List<CategoryImage>();
             this.PopulateGenders();
             this.PopulateColors();
             this.PopulateShippingType();
             this.PopulateCategories();
             this.PopulateSizes();
+            this.PopulateCategoryFrontImages();
         }
 
         public void PopulateSizes()
@@ -91,19 +94,41 @@
         public void PopulateCategories()
         {
             this.Categories.Add(
-                new Category { Name = "Skirts", Quantity = 0 });
+                new Category { Name = "Skirts", Description = "High quality Skirts for every lady!", Quantity = 0 });
             this.Categories.Add(
-                new Category { Name = "Jeans", Quantity = 0 });
+                new Category { Name = "Jeans", Description = "Tight or loose ?", Quantity = 0 });
             this.Categories.Add(
-                new Category { Name = "Sweaters", Quantity = 0 });
+                new Category { Name = "Sweaters", Description = "Nice and warm!", Quantity = 0 });
             this.Categories.Add(
-                new Category { Name = "Bags", Quantity = 0 });
+                new Category { Name = "Bags", Description = "You can put everything inside!", Quantity = 0 });
             this.Categories.Add(
-                new Category { Name = "Accessories", Quantity = 0 });
+                new Category { Name = "Accessories", Description = "Come and see!", Quantity = 0 });
             this.Categories.Add(
-                new Category { Name = "Ties", Quantity = 0 });
+                new Category { Name = "Ties", Description = "For every occasion!", Quantity = 0 });
             this.Categories.Add(
-                new Category { Name = "Jackets", Quantity = 0 });
+                new Category { Name = "Jackets", Description = "Cool jackets!", Quantity = 0 });
+            this.Categories.Add(
+                new Category { Name = "Trousers", Description = "High quality cloth trousers!", Quantity = 0 });
+        }
+
+        public void PopulateCategoryFrontImages()
+        {
+            this.CategoryFrontImages.Add(
+                new CategoryImage { CategoryName = "Skirts", FileName = "skirts.jpg", IsFrontImage = true });
+            this.CategoryFrontImages.Add(
+               new CategoryImage { CategoryName = "Bags", FileName = "bags.jpg", IsFrontImage = true });
+            this.CategoryFrontImages.Add(
+               new CategoryImage { CategoryName = "Jeans", FileName = "jeans.jpg", IsFrontImage = true });
+            this.CategoryFrontImages.Add(
+               new CategoryImage { CategoryName = "Sweaters", FileName = "sweaters.jpg", IsFrontImage = true });
+            this.CategoryFrontImages.Add(
+               new CategoryImage { CategoryName = "Accessories", FileName = "accessories.jpg", IsFrontImage = true });
+            this.CategoryFrontImages.Add(
+               new CategoryImage { CategoryName = "Ties", FileName = "ties.jpg", IsFrontImage = true });
+            this.CategoryFrontImages.Add(
+               new CategoryImage { CategoryName = "Jackets", FileName = "jackets.jpg", IsFrontImage = true });
+            this.CategoryFrontImages.Add(
+                new CategoryImage { CategoryName = "Trousers", FileName = "trousers.jpg", IsFrontImage = true });
         }
     }
 }

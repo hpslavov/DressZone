@@ -15,8 +15,15 @@
             @Html.AntiForgeryToken()
 
             <p class="form-row form-row-wide">
-                <label for="reg_email">Email Address: <span class="required">*</span></label>
+                @Html.LabelFor(m => m.Email, new { @class = "required" })
+                @*<label for="reg_email">Email Address: <span class="required">*</span></label>*@
                 @Html.TextBoxFor(m => m.Email, new { @class = "input-text" })
+                @*<input type="email" class="input-text" name="email" id="reg_email" value="" />*@
+            </p>
+
+            <p class="form-row form-row-wide">
+                @Html.LabelFor(m => m.UserName,new { @class = "required"})
+                @Html.TextBoxFor(m => m.UserName, new { @class = "input-text" })
                 @*<input type="email" class="input-text" name="email" id="reg_email" value="" />*@
             </p>
 

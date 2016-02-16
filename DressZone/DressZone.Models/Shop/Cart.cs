@@ -1,19 +1,24 @@
 ﻿namespace DressZone.Models.Shop
 {
     using Account;
+    using Common.Contracts;
     using DressZone.Models.Shop.Common;
     using System;
     using System.Collections.Generic;
-    public class Cart : BaseModel
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    public class Cart
     {
         private ICollection<CartSubItem> subItems;
 
-        public Cart():base()
+        public Cart()
         {
+            this.Id = Guid.NewGuid().ToString().Replace("-",string.Empty);
             this.subItems = new List<CartSubItem>();
         }
 
-        public string UserId { get; set; }
+        [Key, ForeignKey("User")]
+        public string Id { get; set; }
 
         public virtual User User { get; set; }
 
@@ -32,5 +37,13 @@
             get { return this.subItems; }
             set { this.subItems = value; }
         }
+
+        public DateTime? CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
     }
 }
