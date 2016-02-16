@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{06512B96-996A-4872-9FCA-915DE2DAE254}</ProjectGuid>
+    <ProjectGuid>4ae989cf-1230-4207-a660-81179c8dba60</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DressZone.Services</RootNamespace>
-    <AssemblyName>DressZone.Services</AssemblyName>
+    <RootNamespace>ImagesServices</RootNamespace>
+    <AssemblyName>ImagesServices</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,39 +30,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System"/>
+    
+    <Reference Include="System.Core"/>
+    <Reference Include="System.Xml.Linq"/>
+    <Reference Include="System.Data.DataSetExtensions"/>
+    
+    
+    <Reference Include="Microsoft.CSharp"/>
+    
+    <Reference Include="System.Data"/>
+    
+    <Reference Include="System.Net.Http"/>
+    
+    <Reference Include="System.Xml"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\AdminCategoriesService.cs" />
-    <Compile Include="Admin\AdminHomeService.cs" />
-    <Compile Include="Contracts\IAdminHomeService.cs" />
-    <Compile Include="Contracts\IAdminCategoriesService.cs" />
-    <Compile Include="Contracts\ICategoriesService.cs" />
-    <Compile Include="Contracts\IImagesService.cs" />
-    <Compile Include="ImagesService.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DressZone.Context\DressZone.Context.csproj">
-      <Project>{f0068bea-01b1-4554-9a5c-93d11080cc2e}</Project>
-      <Name>DressZone.Context</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DressZone.Models\DressZone.Models.csproj">
-      <Project>{13d0c6c7-e143-439d-8b6a-38573553b93b}</Project>
-      <Name>DressZone.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DressZone.Repository\DressZone.Repository.csproj">
-      <Project>{c866cec7-62ec-45cd-92d4-93cb8e82d42b}</Project>
-      <Name>DressZone.Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -72,4 +57,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-</Project>
+
+ </Project>

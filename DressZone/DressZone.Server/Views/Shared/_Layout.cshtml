@@ -42,45 +42,7 @@
             <div class="container">
 
                 <!-- Top Bar Menu -->
-                <div class="ten columns">
-                    <ul class="top-bar-menu">
-                        <li><i class="fa fa-phone"></i> (564) 123 4567</li>
-                        <li><i class="fa fa-envelope"></i> <a href="#">mail@example.com</a></li>
-                        <li>
-                            <div class="top-bar-dropdown">
-                                <span>English</span>
-                                <ul class="options">
-                                    <li><div class="arrow"></div></li>
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">Polish</a></li>
-                                    <li><a href="#">Deutsch</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="top-bar-dropdown">
-                                <span>USD</span>
-                                <ul class="options">
-                                    <li><div class="arrow"></div></li>
-                                    <li><a href="#">USD</a></li>
-                                    <li><a href="#">PLN</a></li>
-                                    <li><a href="#">EUR</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Social Icons -->
-                <div class="six columns">
-                    <ul class="social-icons">
-                        <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a class="dribbble" href="#"><i class="icon-dribbble"></i></a></li>
-                        <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-                        <li><a class="pinterest" href="#"><i class="icon-pinterest"></i></a></li>
-                    </ul>
-                </div>
+             
 
             </div>
         </div>
@@ -96,7 +58,7 @@
             <!-- Logo -->
             <div class="four columns">
                 <div id="logo">
-                    <h1><a href="@Url.Action("Index","Home")"><img id="imgLogo" src="~/images/logo.png"/></a></h1>
+                    <h1><a href="@Url.Action("Index","Home", new { area = string.Empty })"><img id="imgLogo" src="~/images/logo.png" /></a></h1>
                 </div>
             </div>
 
@@ -105,9 +67,6 @@
             <div class="twelve columns">
                 <div id="additional-menu">
                     <ul>
-                        <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                        <li><a href="wishlist.html">WishList <span>(2)</span></a></li>
-                        <li><a href="checkout-billing-details.html">Checkout</a></li>
                         @Html.Partial("_LoginPartial")
                     </ul>
                 </div>
@@ -199,68 +158,7 @@
                         </li>
 
 
-                        <li>
-                            <a href="#">Features</a>
-                            <div class="mega">
-                                <div class="mega-container">
 
-                                    <div class="one-column">
-                                        <ul>
-                                            <li><span class="mega-headline">Example Pages</span></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="faq.html">FAQ</a></li>
-                                            <li><a href="404-page.html">404 Page</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="one-column">
-                                        <ul>
-                                            <li><span class="mega-headline">Featured Pages</span></li>
-                                            <li><a href="index-2.html">Business Homepage</a></li>
-                                            <li><a href="shop-with-sidebar.html">Default Shop</a></li>
-                                            <li><a href="blog-masonry.html">Masonry Blog</a></li>
-                                            <li><a href="variable-product-page.html">Variable Product</a></li>
-                                            <li><a href="portfolio-dynamic-grid.html">Dynamic Grid</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="one-column hidden-on-mobile">
-                                        <ul>
-                                            <li><span class="mega-headline">Paragraph</span></li>
-                                            <li><p>This <a href="#">Mega Menu</a> can handle everything. Lists, paragraphs, forms...</p></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="one-fourth-column hidden-on-mobile">
-                                        <a href="#" class="img-caption margin-reset">
-                                            <figure>
-                                                <img src="images/menu-banner-01.jpg" alt="" />
-                                                <figcaption>
-                                                    <h3>Jeans</h3>
-                                                    <span>Pack for Style</span>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
-                                    </div>
-
-                                    <div class="one-fourth-column hidden-on-mobile">
-                                        <a href="#" class="img-caption margin-reset">
-                                            <figure>
-                                                <img src="images/menu-banner-02.jpg" alt="" />
-                                                <figcaption>
-                                                    <h3>Sunglasses</h3>
-                                                    <span>Nail the Basics</span>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
-                                    </div>
-
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </li>
 
 
                         <li class="dropdown">
@@ -294,11 +192,42 @@
                             </ul>
                         </li>
 
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                        <li>
+                            <a href="#">Admin Features</a>
+                            <div class="mega">
+                                <div class="mega-container">
 
-                        <li class="demo-button">
-                            <a href="#">Get This Theme</a>
+                                    <div class="one-column">
+                                        <ul>
+                                            <li><span class="mega-headline">Manage Categories</span></li>
+                                            <li>@Html.ActionLink("All","All","Categories",new { area = "Admin" },null)</li>
+                                            <li>@Html.ActionLink("Create Category", "AddCategory", "Categories", new { area = "Admin" }, null)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="one-column">
+                                        <ul>
+                                            <li><span class="mega-headline">Manage Products</span></li>
+                                            <li>@Html.ActionLink("Add Image","AddImage","Images",new { area = "Admin"},null)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="one-column">
+                                        <ul>
+                                            <li><span class="mega-headline">Manage Users</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="one-column">
+                                        <ul>
+                                            <li><span class="mega-headline">Manage Sales</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
                         </li>
-
+                        }
                     </ul>
                 </nav>
             </div>
@@ -400,7 +329,7 @@
         <!-- Java Script
         ================================================== -->
         @*<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-            <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>*@
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>*@
 
 
         <script src="~/Scripts/themeScripts/jquery.jpanelmenu.js"></script>
@@ -426,7 +355,7 @@
         <script src="~/Scripts/themeScripts/custom.js"></script>
         @RenderSection("scripts", required: false)
         @Scripts.Render("~/bundles/private-functions");
-    
+
         <!-- Style Switcher
         ================================================== -->
         <script src="~/Scripts/themeScripts/switcher.js"></script>

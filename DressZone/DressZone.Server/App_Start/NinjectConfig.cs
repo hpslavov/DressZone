@@ -66,6 +66,12 @@ namespace DressZone.Server.App_Start
         {
             kernel.Bind<IDressZoneDbContext>().To<DressZoneDbContext>().InRequestScope();
 
+            kernel.Bind(x =>
+            {
+                x.From("DressZone.Services")
+                .SelectAllClasses()
+                .BindDefaultInterface();
+            });
 
             kernel.Bind(x =>
             {

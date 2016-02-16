@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    function clear() {
+        // $(document).attr("location", "/Admin/Images/AddImage");
+    }
+
+    function failure() {
+
+    }
+
+</script>
+
+<div class="container">
+    <div>
+        @using (Ajax.BeginForm("SaveImage", "Images", new { area = "Admin" , name = "imageFiles" }, new AjaxOptions
+        {
+            HttpMethod = "POST",
+        }, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.TextBox("imageFiles.CategoryName")
+            <input type="file" name="imageFiles.imageFiles" id="first-image" />
+            <input type="file" name="imageFiles.imageFiles" id="first-image" />
+            <input type="file" name="imageFiles.imageFiles" id="first-image" /><br />
+            <label for="isFrontImage">Make front image</label>
+           @Html.CheckBox("imageFiles.IsFrontImage")
+            <input type="submit" />
+        }
+    </div>
+</div>
