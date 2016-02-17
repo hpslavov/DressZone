@@ -1,5 +1,4 @@
-﻿@model IEnumerable<DressZone.Server.Areas.Admin.Models.ViewModels.AllCategoriesViewModel>
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -7,52 +6,86 @@
 <!-- Content
 ================================================== -->
 <!-- Container -->
-<div class="container">
+@Styles.Render("~/kendo/styles")
+@Scripts.Render("~/bundles/kendo")
+<div>
+    <h3>Categories</h3>
+    @(Html.Kendo()
+                .Grid<DressZone.Server.Areas.Admin.Models.ViewModels.AllCategoriesViewModel>()
+                .Name("grid")
+                .Columns(columns =>
+                {
+                    columns.Bound(c => c.Name);
+                    columns.Bound(c => c.Description);
+                    columns.Bound(c => c.FrontImageName);
+                    columns.Bound(c => c.CreatedOn);
+                    columns.Bound(c => c.ModifiedOn);
+                    columns.Bound(c => c.IsDeleted);
+                    columns.Bound(c => c.DeletedOn);
+                    columns.Command(command =>
+                    {
+                        command.Edit();
+                        command.Destroy();
+                    });
+                })
+                .Pageable()
+                .Sortable()
+                .Filterable(filter => filter.Mode(GridFilterMode.Menu))
+                .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                .DataSource(datasource =>
+                       datasource
+                         .Ajax()
+                         .PageSize(4)
+                         .Model(m => m.Id(c => c.Name))
+                         .Read(read => read.Action("All", "Categories", new { area = "Admin" }))
+                         .Update(update => update.Action("UpdateExisting","Categories", new { area = "Admin" }))
+                         .Destroy(destroy => destroy.Action("Delete","Categories", new { area = "Admin" }))))
 
-    <!-- Filters -->
-    <div class="sixteen columns">
-        <div id="filters" class="filters-dropdown">
-            <ul class="option-set">
-                <li class="active"><a href="#filter" class="selected" data-filter="*">All</a></li>
-                <li><a href="#filter" data-filter=".accessories">Accessories</a></li>
-                <li><a href="#filter" data-filter=".clothing">Clothing</a></li>
-                <li><a href="#filter" data-filter=".technology">Technology</a></li>
-                <li><a href="#filter" data-filter=".food">Food</a></li>
-                <li><a href="#filter" data-filter=".other">Other</a></li>
-            </ul>
+    @*
+              <!-- Filters -->
+            <div class="sixteen columns">
+            <div id="filters" class="filters-dropdown">
+                <ul class="option-set">
+                    <li class="active"><a href="#filter" class="selected" data-filter="*">All</a></li>
+                    <li><a href="#filter" data-filter=".accessories">Accessories</a></li>
+                    <li><a href="#filter" data-filter=".clothing">Clothing</a></li>
+                    <li><a href="#filter" data-filter=".technology">Technology</a></li>
+                    <li><a href="#filter" data-filter=".food">Food</a></li>
+                    <li><a href="#filter" data-filter=".other">Other</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
 
-    <ul id="og-grid" class="og-grid">
+        <ul id="og-grid" class="og-grid">
 
-        @foreach (var cat in Model)
-        {
-              <!-- Project -->
-            <li class="clothing others clickable">
+            @foreach (var cat in Model)
+            {
+                  <!-- Project -->
+                <li class="clothing others clickable">
 
-                <a href="#" class="grid-item-image">
-                    <div class="dynamic-portfolio-holder">
-                        <img src="~/images/Uploaded/@cat.FrontImageName" alt="" />
-                        <div class="hover-cover"></div>
-                        <div class="hover-icon"></div>
-                        <div class="hover-desc">
-                            <h5>@cat.Name</h5>
-                            <span>Clothing</span>
+                    <a href="#" class="grid-item-image">
+                        <div class="dynamic-portfolio-holder">
+                            <img src="~/images/Uploaded/@cat.FrontImageName" alt="" />
+                            <div class="hover-cover"></div>
+                            <div class="hover-icon"></div>
+                            <div class="hover-desc">
+                                <h5>@cat.Name</h5>
+                                <span>Clothing</span>
+                            </div>
                         </div>
+                    </a>
+                    <div class="og-expander">
+                        <div class="flexslider gridslider">
+                            <ul class="slides">
+                                <li><img src="~/images/Uploaded/@cat.FrontImageName" alt=""></li>
+                            </ul>
+                        </div>
+                        @Html.Partial("_EditCategory",cat)
                     </div>
-                </a>
-                <div class="og-expander">
-                    <div class="flexslider gridslider">
-                        <ul class="slides">
-                            <li><img src="~/images/Uploaded/@cat.FrontImageName" alt=""></li>
-                        </ul>
-                    </div>
-                    @Html.Partial("_EditCategory",cat)
-                </div>
-            </li>
-        }
-    </ul>
+                </li>
+            }
+        </ul>*@
 
 </div>
 <!-- Container / End -->

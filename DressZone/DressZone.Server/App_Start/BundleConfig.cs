@@ -56,6 +56,17 @@ namespace DressZone.Server
             //bundles.Add(new ScriptBundle("~/bundles/theme/jquery").Include(
             //        "~/Scripts/themeScripts/jquery-2.1.0.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kendo")
+                                            .Include("~/Scripts/kendo/kendo.all.min.js",
+                                                     "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+
+            bundles.Add(new StyleBundle("~/kendo/styles")
+                    .Include("~/Content/kendo/kendo.bootstrap.min.css",
+                            "~/Content/kendo/kendo.common.core.min.css",
+                             "~/Content/kendo/kendo.common.min.css",
+                             "~/Content/kendo/kendo.black.min.css"));
+
+
             bundles.Add(new StyleBundle("~/Content/css")
                     .Include(
                     "~/Content/base.css",

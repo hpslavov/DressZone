@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+
 
 namespace DressZone.Server.Areas.Admin.Controllers
 {
@@ -66,14 +69,22 @@ namespace DressZone.Server.Areas.Admin.Controllers
             images.SaveImageFile(imagesToDatabase);
             images.SaveImageRecord(imagesToDatabase);
 
-            return RedirectToAction("All","Categories");
+            return Json("All","Categories");
         }
 
         public ActionResult All()
         {
-            var allCategory = categories.GetAll().AsQueryable().To<AllCategoriesViewModel>().ToList();
             
-            return View("All", allCategory);
+            return View("All");
+        }
+
+        [HttpPost]
+        public ActionResult All([DataSourceRequest]DataSourceRequest categoriesModel)
+        {
+            var allCategory = categories.GetAll().AsQueryable().To<AllCategoriesViewModel>().ToList();
+
+            return Json(allCategory.ToDataSourceResult(categoriesModel));
+            
         }
 
         [HttpGet]

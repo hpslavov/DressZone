@@ -9,6 +9,7 @@
     {
         private ICollection<Color> colors;
         private ICollection<ProductImage> images;
+        private ICollection<Size> sizes;
         private ICollection<Review> reviews;
 
         public Product()
@@ -16,6 +17,7 @@
             this.colors = new HashSet<Color>();
             this.images = new HashSet<ProductImage>();
             this.reviews = new HashSet<Review>();
+            this.sizes = new HashSet<Size>();
         }
 
         public int Id { get; set; }
@@ -36,13 +38,18 @@
 
         public virtual Category Category { get; set; }
 
-        public int? SizeId { get; set; }
-
-        public virtual Size Size { get; set; }
+        public virtual ICollection<Size> Sizes 
+        {
+            get { return this.sizes; }
+            set { this.sizes = value; }
+        }
 
         public DateTime? CreatedOn { get; set; }
+
         public DateTime? DeletedOn { get; set; }
+
         public bool IsDeleted { get; set; }
+
         public DateTime? ModifiedOn { get; set; }
 
         public virtual ICollection<Color> Colors
