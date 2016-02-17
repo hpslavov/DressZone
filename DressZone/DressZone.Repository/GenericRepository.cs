@@ -61,6 +61,10 @@
             entry.State = EntityState.Modified;
         }
 
+        /// <summary>
+        /// Hard Delete.Deletes the entire record from the Context. Not recommended.
+        /// </summary>
+        /// <param name="entity"></param>
         public virtual void Delete(T entity)
         {
             var entry = this.Context.Entry(entity);
@@ -75,13 +79,16 @@
             }
         }
 
-        public virtual void Delete(object id)
+        /// <summary>
+        /// Soft delete. Flags a record as IsDeleted and gets Detached by the Context.
+        /// </summary>
+        /// <param name="id"></param>
+        public virtual void AddDeleteFlag(T entity)
         {
-            var entity = this.GetById(id);
-
             if (entity != null)
             {
-                this.Delete(entity);
+                var entry = this.Context.Entry(entity);
+                entry.State = EntityState.Modified;
             }
         }
 
@@ -98,7 +105,16 @@
 
         public int SaveChanges()
         {
-            return this.Context.SaveChanges();
+            try
+            {
+                return this.Context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         public void Dispose()

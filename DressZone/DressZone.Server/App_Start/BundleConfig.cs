@@ -61,8 +61,7 @@ namespace DressZone.Server
                                                      "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
 
             bundles.Add(new StyleBundle("~/kendo/styles")
-                    .Include("~/Content/kendo/kendo.bootstrap.min.css",
-                            "~/Content/kendo/kendo.common.core.min.css",
+                    .Include( "~/Content/kendo/kendo.common.core.min.css",
                              "~/Content/kendo/kendo.common.min.css",
                              "~/Content/kendo/kendo.black.min.css"));
 

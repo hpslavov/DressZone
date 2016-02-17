@@ -19,7 +19,7 @@
 
             void Delete(T entity);
 
-            void Delete(object id);
+            void AddDeleteFlag(T entity);
 
             T Attach(T entity);
 

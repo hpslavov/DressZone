@@ -7,8 +7,10 @@ namespace DressZone.Services.Contracts
     public interface IAdminCategoriesService
     {
         IQueryable<Category> GetAll();
+        IQueryable<Category> GetAllWithDeleted();
         Category GetByName(string categoryName);
         void CreateCategory(Category categoryToAdd, List<CategoryImage> images);
-        void EditCategory(Category categoryToUpdate);
+        Category EditCategory(Category categoryToUpdate);
+        Category Delete(Category categoryToDelete);
     }
 }

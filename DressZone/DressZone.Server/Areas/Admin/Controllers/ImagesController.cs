@@ -11,7 +11,7 @@
     using Infrastructure.Mapping.Contracts;
 
     [Authorize]
-    public class ImagesController : Controller
+    public class ImagesController : AdminBaseController
     {
         private IImagesService imageService;
 

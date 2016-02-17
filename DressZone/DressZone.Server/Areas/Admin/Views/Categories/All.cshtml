@@ -6,8 +6,10 @@
 <!-- Content
 ================================================== -->
 <!-- Container -->
-@Styles.Render("~/kendo/styles")
-@Scripts.Render("~/bundles/kendo")
+
+@section kendo {
+    @Scripts.Render("~/bundles/kendo")
+    }
 <div>
     <h3>Categories</h3>
     @(Html.Kendo()
@@ -18,10 +20,10 @@
                     columns.Bound(c => c.Name);
                     columns.Bound(c => c.Description);
                     columns.Bound(c => c.FrontImageName);
-                    columns.Bound(c => c.CreatedOn);
-                    columns.Bound(c => c.ModifiedOn);
+                    columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
+                    columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
                     columns.Bound(c => c.IsDeleted);
-                    columns.Bound(c => c.DeletedOn);
+                    columns.Bound(c => c.DeletedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
                     columns.Command(command =>
                     {
                         command.Edit();
@@ -35,8 +37,8 @@
                 .DataSource(datasource =>
                        datasource
                          .Ajax()
-                         .PageSize(4)
-                         .Model(m => m.Id(c => c.Name))
+                         .PageSize(10)
+                         .Model(m => m.Id(c => c.Id))
                          .Read(read => read.Action("All", "Categories", new { area = "Admin" }))
                          .Update(update => update.Action("UpdateExisting","Categories", new { area = "Admin" }))
                          .Destroy(destroy => destroy.Action("Delete","Categories", new { area = "Admin" }))))

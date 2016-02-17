@@ -26,6 +26,12 @@ namespace DressZone.Services.Admin
             return categories;
         }
 
+        public IQueryable<Category> GetAllWithDeleted()
+        {
+            var categories = this.categoryRepo.All();
+            return categories;
+        }
+
         public Category GetByName(string categoryName)
         {
             var category = this.categoryRepo.All().Where(c => c.Name == categoryName && c.IsDeleted != true).FirstOrDefault();
@@ -39,10 +45,21 @@ namespace DressZone.Services.Admin
             this.categoryRepo.SaveChanges();
         }
 
-        public void EditCategory(Category categoryToUpdate)
+        public Category EditCategory(Category categoryToUpdate)
         {
+            categoryToUpdate.ModifiedOn = DateTime.Now;
             this.categoryRepo.Update(categoryToUpdate);
             this.categoryRepo.SaveChanges();
+            return categoryToUpdate;
+        }
+
+        public Category Delete(Category categoryToDelete)
+        {
+            categoryToDelete.DeletedOn = DateTime.Now;
+            categoryToDelete.IsDeleted = true;
+            this.categoryRepo.AddDeleteFlag(categoryToDelete);
+            this.categoryRepo.SaveChanges();
+            return categoryToDelete;
         }
 
 

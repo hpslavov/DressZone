@@ -11,8 +11,7 @@ using System.Web.Mvc;
 
 namespace DressZone.Server.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class CartController : Controller
+    public class CartController : AdminBaseController
     {
         private IAdminCartService cartService;
         private IDressZoneDbContext ctx;
@@ -23,7 +22,6 @@ namespace DressZone.Server.Areas.Admin.Controllers
             this.cartService = service;
         }
 
-        [HttpPost]
         public ActionResult CreateCartInitial(string UserName)
         {
             cartService.CreateInitialUserCart(UserName);

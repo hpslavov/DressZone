@@ -5,8 +5,9 @@ using System.Collections.Generic;
 
 namespace DressZone.Server.Areas.Admin.Models.ViewModels
 {
-    public class AllCategoriesViewModel : IMapFrom<Category>
+    public class AllCategoriesViewModel : IMapFrom<Category>,IMapTo<Category>
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string FrontImageName { get; set; }
         public string Description { get; set; }

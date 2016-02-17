@@ -9,11 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using AutoMapper.QueryableExtensions;
 
 
 namespace DressZone.Server.Areas.Admin.Controllers
 {
-    public class CategoriesController : Controller
+    [Authorize(Roles = "Admin")]
+    public class CategoriesController : AdminBaseController
     {
         private IAdminCategoriesService categories;
         private IImagesService images;
@@ -29,6 +31,8 @@ namespace DressZone.Server.Areas.Admin.Controllers
         {
             return View();
         }
+
+
 
         [HttpPost]
         public ActionResult AddCategory(AddCategoryViewModel model)
@@ -72,19 +76,49 @@ namespace DressZone.Server.Areas.Admin.Controllers
             return Json("All","Categories");
         }
 
+        [HttpGet]
         public ActionResult All()
         {
-            
             return View("All");
         }
 
         [HttpPost]
         public ActionResult All([DataSourceRequest]DataSourceRequest categoriesModel)
         {
-            var allCategory = categories.GetAll().AsQueryable().To<AllCategoriesViewModel>().ToList();
+            var allCategory = categories.GetAllWithDeleted().AsQueryable().To<AllCategoriesViewModel>().ToList();
 
             return Json(allCategory.ToDataSourceResult(categoriesModel));
             
+        }
+
+        [HttpPost]
+        public ActionResult UpdateExisting([DataSourceRequest]DataSourceRequest request, AllCategoriesViewModel categoryModel)
+        {
+            
+            if (categoryModel != null && ModelState.IsValid)
+            {
+            }
+
+            var categoryToUpdate = this.Mapper.Map<Category>(categoryModel);
+
+            var updatedCategory = categories.EditCategory(categoryToUpdate);
+
+            var result = new[] { updatedCategory }.ToDataSourceResult(request,ModelState);
+
+            return Json(result);
+        }
+
+        [HttpPost]
+        public ActionResult Delete([DataSourceRequest]DataSourceRequest request,AllCategoriesViewModel categoryModel)
+        {
+            if (categoryModel != null )
+            {
+            }
+            var categoryToDelete = this.Mapper.Map<Category>(categoryModel);
+            var deletedCategoryRecord = categories.Delete(categoryToDelete);
+            var result = new[] { deletedCategoryRecord }.ToDataSourceResult(request, ModelState);
+            return Json(result);
+
         }
 
         [HttpGet]

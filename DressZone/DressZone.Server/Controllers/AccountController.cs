@@ -173,7 +173,7 @@ namespace DressZone.Server.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return RedirectToAction("CreateCartInitial","Cart",new { username = user.UserName });
+                    return RedirectToAction("CreateCartInitial", "Cart", new { area = "Admin", username = user.UserName });
                 }
                 AddErrors(result);
             }

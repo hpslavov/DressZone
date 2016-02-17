@@ -18,7 +18,9 @@
     ================================================== -->
     @*<link rel="stylesheet" href="Content/style.css">*@
     @*<link rel="stylesheet" href="Content/green.css" id="colors">*@
+    
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/kendo/styles")
     <!-- Initial JS-->
     <script src="~/Scripts/themeScripts/jquery-1.11.0.min.js"></script>
     <script src="~/Scripts/themeScripts/jquery-migrate-1.2.1.min.js"></script>
@@ -232,6 +234,7 @@
                 </nav>
             </div>
         </div>
+       
         <div class="container body-content">
             @RenderBody()
 
@@ -355,7 +358,7 @@
         <script src="~/Scripts/themeScripts/custom.js"></script>
         @RenderSection("scripts", required: false)
         @Scripts.Render("~/bundles/private-functions");
-
+        @RenderSection("kendo",required:false)
         <!-- Style Switcher
         ================================================== -->
         <script src="~/Scripts/themeScripts/switcher.js"></script>
