@@ -2,27 +2,21 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<!-- Content
-================================================== -->
-<!-- Container -->
-
 @section kendo {
     @Scripts.Render("~/bundles/kendo")
-    }
+}
 <div>
     <h3>Categories</h3>
-    @(Html.AdminGrid<DressZone.Server.Areas.Admin.Models.ViewModels.AllCategoriesViewModel>("grid")
+    @(Html.AdminGrid<DressZone.Server.Areas.Admin.Models.ViewModels.Users.GridViewUserViewModel>("gridUsers")
                 .Columns(columns =>
                 {
-                    columns.Bound(c => c.Name);
-                    columns.Bound(c => c.Description);
-                    columns.Bound(c => c.FrontImageName);
-                    columns.Bound(c => c.Quantity);
+                    columns.Bound(c => c.Id);
+                    columns.Bound(c => c.Role);
                     columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
-                    columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
+                    columns.Bound(c => c.Email);
+                    columns.Bound(c => c.UserName);
                     columns.Bound(c => c.IsDeleted);
+                    columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
                     columns.Bound(c => c.DeletedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
                     columns.Command(command =>
                     {
@@ -35,9 +29,9 @@
                          .Ajax()
                          .PageSize(10)
                          .Model(m => m.Id(c => c.Id))
-                         .Read(read => read.Action("All", "Categories", new { area = "Admin" }))
-                         .Update(update => update.Action("UpdateExisting","Categories", new { area = "Admin" }))
-                         .Destroy(destroy => destroy.Action("Delete","Categories", new { area = "Admin" }))))
+                         .Read(read => read.Action("All", "User", new { area = "Admin" }))
+                         .Update(update => update.Action("UpdateExisting", "User", new { area = "Admin" }))
+                         .Destroy(destroy => destroy.Action("Delete", "User", new { area = "Admin" }))))
 
 </div>
-<!-- Container / End -->
+

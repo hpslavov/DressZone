@@ -61,9 +61,11 @@
     <Compile Include="Admin\AdminCartService.cs" />
     <Compile Include="Admin\AdminCategoriesService.cs" />
     <Compile Include="Admin\AdminHomeService.cs" />
+    <Compile Include="Admin\AdminUserService.cs" />
     <Compile Include="Contracts\IAdminCartService.cs" />
     <Compile Include="Contracts\IAdminHomeService.cs" />
     <Compile Include="Contracts\IAdminCategoriesService.cs" />
+    <Compile Include="Contracts\IAdminUserService.cs" />
     <Compile Include="Contracts\ICategoriesService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="ImagesService.cs" />

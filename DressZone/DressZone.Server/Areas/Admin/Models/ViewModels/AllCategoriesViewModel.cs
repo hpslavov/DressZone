@@ -11,6 +11,7 @@ namespace DressZone.Server.Areas.Admin.Models.ViewModels
         public string Name { get; set; }
         public string FrontImageName { get; set; }
         public string Description { get; set; }
+        public string Quantity { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

@@ -204,6 +204,7 @@
     <Compile Include="Areas\Admin\Controllers\ImagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\KendoHtmlHelpers\KendoHtmlHelper.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\AddCategoryRequestModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\AddCategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\AddImageResponseModel.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Areas\Admin\Models\ViewModels\EditCategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\ImageRequestModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\MemoryFile.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Users\GridViewUserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -453,6 +455,7 @@
     <Content Include="Content\kendo\kendo.black.min.css.map" />
     <Content Include="Content\kendo\kendo.common-office365.min.css.map" />
     <Content Include="Content\kendo\kendo.dataviz.materialblack.min.css.map" />
+    <Content Include="Areas\Admin\Views\User\All.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
