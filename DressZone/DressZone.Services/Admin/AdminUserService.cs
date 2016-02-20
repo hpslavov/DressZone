@@ -7,7 +7,7 @@ namespace DressZone.Services.Admin
     using Models.Account;
     using Repository.Contracts;
     using Microsoft.AspNet.Identity.EntityFramework;
-
+    using System.Collections.Generic;
     public class AdminUserService : IAdminUserService
     {
         private IGenericRepository<User> users;
@@ -21,7 +21,12 @@ namespace DressZone.Services.Admin
 
         public User Delete(User user)
         {
-            throw new NotImplementedException();
+            user.IsDeleted = true;
+            user.ModifiedOn = DateTime.Now;
+            user.DeletedOn = DateTime.Now;
+            this.users.PartialModifiedUpdated(user);
+            this.users.SaveChanges();
+            return user;
         }
 
         public IQueryable<User> GetAll()
@@ -30,24 +35,52 @@ namespace DressZone.Services.Admin
             return usersFromDb;
         }
 
-        public User GetByName(string email)
+        public User GetByEmail(string email)
         {
             var resultUser = this.users.All().Where(x => x.Email == email).FirstOrDefault();
             return resultUser;
         }
 
-        public string GetRole(string name)
+        public IQueryable<IdentityRole> GetAllRolesOfUser(string userId)
         {
-            var user = this.GetByName(name);
-            var userRoleName = user.Roles.ToList()[0].RoleId;
-            var userRoles = this.roles.All().Where(r => r.Id == userRoleName).ToList();
-            var result = userRoles[0].Name;
+            var user = this.users.GetById(userId);
+            var rolesId = user.Roles.Select(r => r.RoleId).ToList();
+            var roleEntities = new List<IdentityRole>();
+            foreach (var id in rolesId)
+            {
+                var current = GetRoleEntity(id);
+                roleEntities.Add(current);
+            }
+
+            return roleEntities.AsQueryable();
+        }
+
+        public IdentityRole GetRole(string userEmail)
+        {
+            var user = this.GetByEmail(userEmail);  
+            var userRoleId = user.Roles.ToList()[0].RoleId;
+            var result = this.roles.All().Where(r => r.Id == userRoleId).ToList()[0];
             return result;
         }
 
-        public User Update(User user)
+        public IdentityRole GetRoleEntity(string Id)
         {
-            throw new NotImplementedException();
+            var currentRole = this.roles.All().Where(r => r.Id == Id).FirstOrDefault();
+            
+            return currentRole;
+        }
+
+        public User EditUser(User user)
+        {
+            user.ModifiedOn = DateTime.Now;
+            this.users.PartialModifiedUpdated(user);
+            this.users.SaveChanges();
+            return user;
+        }
+
+        public User Create(User user)
+        {
+            return null;
         }
     }
 }

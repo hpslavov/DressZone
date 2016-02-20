@@ -5,6 +5,12 @@
     using System;
     public class GenderType 
     {
+
+        public GenderType()
+        {
+            this.CreatedOn = DateTime.Now;
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime? CreatedOn { get; set; }

@@ -7,7 +7,7 @@
     {
         public Size()
         {
-
+            this.CreatedOn = DateTime.Now;
         }
 
         public int Id { get; set; }

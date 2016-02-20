@@ -4,6 +4,7 @@
     using Models.Account;
     using Models.Shop;
     using Repository.Contracts;
+    using System;
     using System.Linq;
 
     public class AdminCartService :IAdminCartService
@@ -26,7 +27,8 @@
             {
                 User = user,
                 Total = 0.0m,
-                SubTotal = 0.0m
+                SubTotal = 0.0m,
+                CreatedOn = DateTime.Now
             };
             cartRepository.Add(cart);
             cartRepository.SaveChanges();

@@ -12,6 +12,7 @@
         public Category(): base()
         {
             this.images = new List<CategoryImage>();
+            this.CreatedOn = DateTime.Now;
         }
         public int Id { get; set; }
         public string Description { get; set; }

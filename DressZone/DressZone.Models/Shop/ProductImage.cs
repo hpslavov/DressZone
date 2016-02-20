@@ -6,9 +6,9 @@
     using System.ComponentModel.DataAnnotations.Schema;
     public class ProductImage
     {
-        ProductImage() : base()
+        ProductImage()
         {
-
+            this.CreatedOn = DateTime.Now;
         }
         public int Id { get; set; }
         [Column("Product Name")]

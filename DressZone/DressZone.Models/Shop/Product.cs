@@ -18,6 +18,7 @@
             this.images = new HashSet<ProductImage>();
             this.reviews = new HashSet<Review>();
             this.sizes = new HashSet<Size>();
+            this.CreatedOn = DateTime.Now;
         }
 
         public int Id { get; set; }

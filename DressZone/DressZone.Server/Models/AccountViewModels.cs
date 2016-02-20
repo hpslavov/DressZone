@@ -69,7 +69,6 @@ namespace DressZone.Server.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
         public string UserName { get; set; }
 
         [Required]

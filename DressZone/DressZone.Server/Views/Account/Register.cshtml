@@ -10,11 +10,13 @@
 
         <h3 class="headline">Register</h3><span class="line" style="margin-bottom:20px;margin-left:40px;"></span><div class="clearfix"></div>
 
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "register", role = "form" }))
+        @using (Html.BeginForm("Register", "Account", new { area = string.Empty },FormMethod.Post, new { @class = "register", role = "form" }))
         {
             @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
 
             <p class="form-row form-row-wide">
+                @Html.ValidationMessageFor(m => m.Email)
                 @Html.LabelFor(m => m.Email, new { @class = "required" })
                 @*<label for="reg_email">Email Address: <span class="required">*</span></label>*@
                 @Html.TextBoxFor(m => m.Email, new { @class = "input-text" })
@@ -22,21 +24,17 @@
             </p>
 
             <p class="form-row form-row-wide">
-                @Html.LabelFor(m => m.UserName,new { @class = "required"})
-                @Html.TextBoxFor(m => m.UserName, new { @class = "input-text" })
-                @*<input type="email" class="input-text" name="email" id="reg_email" value="" />*@
-            </p>
-
-            <p class="form-row form-row-wide">
+                @Html.ValidationMessageFor(m => m.Password)
                 <label for="reg_password">Password: <span class="required">*</span></label>
                 @Html.TextBoxFor(m => m.Password, new { @class = "input-text", id = "req_password", type = "password" })
                 @*<input type="password" class="input-text" name="password" id="reg_password" />*@
             </p>
 
             <p class="form-row form-row-wide">
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
                 <label for="reg_password2">Repeat Password: <span class="required">*</span></label>
-                @*@Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "input-text", id = "req_password2", type = "password" })*@
-                <input type="password" class="input-text" name="ConfirmPassword" id="reg_password2" />
+                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "input-text", id = "req_password2", type = "password" })
+                @*<input type="password" class="input-text" name="ConfirmPassword" id="reg_password2" />*@
             </p>
 
             <p class="form-row">

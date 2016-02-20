@@ -11,6 +11,7 @@
         public WishList()
         {
             this.products = new List<WishListItem>();
+            this.CreatedOn = DateTime.Now;
         }
 
         public string UserId { get; set; }

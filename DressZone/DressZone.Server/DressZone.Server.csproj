@@ -245,26 +245,10 @@
     <Content Include="Content\dark.css" />
     <Content Include="Content\gray.css" />
     <Content Include="Content\green.css" />
-    <Content Include="Content\kendo\Black\editor.png" />
-    <Content Include="Content\kendo\Black\imagebrowser.png" />
-    <Content Include="Content\kendo\Black\indeterminate.gif" />
-    <Content Include="Content\kendo\Black\loading-image.gif" />
-    <Content Include="Content\kendo\Black\loading.gif" />
-    <Content Include="Content\kendo\Black\loading_2x.gif" />
-    <Content Include="Content\kendo\Black\markers.png" />
-    <Content Include="Content\kendo\Black\markers_2x.png" />
-    <Content Include="Content\kendo\Black\slider-h.gif" />
-    <Content Include="Content\kendo\Black\slider-v.gif" />
-    <Content Include="Content\kendo\Black\sprite.png" />
-    <Content Include="Content\kendo\Black\sprite_2x.png" />
-    <Content Include="Content\kendo\Black\sprite_kpi.png" />
-    <Content Include="Content\kendo\Black\sprite_kpi_2x.png" />
-    <Content Include="Content\kendo\kendo.black.min.css" />
     <Content Include="Content\kendo\kendo.bootstrap.min.css" />
-    <Content Include="Content\kendo\kendo.common-office365.min.css" />
     <Content Include="Content\kendo\kendo.common.core.min.css" />
     <Content Include="Content\kendo\kendo.common.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.materialblack.min.css" />
+    <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="Content\navy.css" />
     <Content Include="Content\olive.css" />
     <Content Include="Content\orange.css" />
@@ -452,9 +436,6 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Url.cshtml" />
-    <Content Include="Content\kendo\kendo.black.min.css.map" />
-    <Content Include="Content\kendo\kendo.common-office365.min.css.map" />
-    <Content Include="Content\kendo\kendo.dataviz.materialblack.min.css.map" />
     <Content Include="Areas\Admin\Views\User\All.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -530,9 +511,13 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Areas\Admin\Views\DisplayTemplates\" />
+    <Folder Include="Areas\Admin\Views\Shared\DisplayTemplates\" />
     <Folder Include="Content\css\colors\" />
+    <Folder Include="Content\kendo\Default\" />
     <Folder Include="images\bg\" />
     <Folder Include="images\portfolio\" />
+    <Folder Include="Views\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

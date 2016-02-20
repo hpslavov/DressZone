@@ -5,9 +5,9 @@
     using System;
     public class Review
     {
-        public Review():base()
+        public Review()
         {
-
+            this.CreatedOn = DateTime.Now;
         }
 
         public int Id { get; set; }

@@ -8,24 +8,25 @@
 
     public interface IGenericRepository<T> : IDisposable where T : class
     {
-        
-            IQueryable<T> All();
 
-            T GetById(object id);
+        IQueryable<T> All();
 
-            void Add(T entity);
+        T GetById(object id);
 
-            void Update(T entity);
+        void Add(T entity);
 
-            void Delete(T entity);
+        void Update(T entity);
 
-            void AddDeleteFlag(T entity);
+        void Delete(T entity);
 
-            T Attach(T entity);
+        void AddDeleteFlag(T entity);
 
-            void Detach(T entity);
+        T Attach(T entity);
 
-            int SaveChanges();
+        void Detach(T entity);
 
+        int SaveChanges();
+
+        void PartialModifiedUpdated(T entity);
     }
 }

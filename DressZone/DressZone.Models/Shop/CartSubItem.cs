@@ -12,6 +12,7 @@
         public CartSubItem()
         {
             this.products = new List<Product>();
+            this.CreatedOn = DateTime.Now;
         }
         public int Id { get; set; }
         public int Quantity { get; set; }

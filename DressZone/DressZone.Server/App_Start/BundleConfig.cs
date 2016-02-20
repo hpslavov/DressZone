@@ -63,7 +63,7 @@ namespace DressZone.Server
             bundles.Add(new StyleBundle("~/kendo/styles")
                     .Include( "~/Content/kendo/kendo.common.core.min.css",
                              "~/Content/kendo/kendo.common.min.css",
-                             "~/Content/kendo/kendo.black.min.css"));
+                             "~/Content/kendo/kendo.default.min.css"));
 
 
             bundles.Add(new StyleBundle("~/Content/css")

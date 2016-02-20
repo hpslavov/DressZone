@@ -5,9 +5,9 @@
     using System;
     public class Color
     {
-        public Color():base()
+        public Color()
         {
-
+            this.CreatedOn = DateTime.Now;
         }
         public int Id { get; set; }
         public string Name { get; set; }

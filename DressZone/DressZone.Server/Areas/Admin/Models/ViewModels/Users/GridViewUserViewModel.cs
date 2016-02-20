@@ -3,6 +3,7 @@
     using DressZone.Models.Account;
     using DressZone.Models.Shop;
     using DressZone.Server.Infrastructure.Mapping.Contracts;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     public class GridViewUserViewModel : IMapFrom<User>, IMapTo<User>
     {

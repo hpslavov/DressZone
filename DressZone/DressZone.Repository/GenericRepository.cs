@@ -61,6 +61,12 @@
             entry.State = EntityState.Modified;
         }
 
+        public virtual void PartialModifiedUpdated(T entity)
+        {
+            var entry = this.Context.Entry(entity);
+            entry.State = EntityState.Modified;
+        }
+
         /// <summary>
         /// Hard Delete.Deletes the entire record from the Context. Not recommended.
         /// </summary>
