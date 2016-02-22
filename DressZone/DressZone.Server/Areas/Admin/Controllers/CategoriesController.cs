@@ -33,7 +33,7 @@ namespace DressZone.Server.Areas.Admin.Controllers
         }
 
 
-
+        //TODO REFACTOR!!!
         [HttpPost]
         public ActionResult AddCategory(AddCategoryViewModel model)
         {
@@ -42,11 +42,9 @@ namespace DressZone.Server.Areas.Admin.Controllers
                 return View(model);
             }
 
-            var buffer = new List<AddCategoryRequestModel>();
             var imagesToDatabase = new List<CategoryImage>();
             var categoryToDatabase = new List<Category>();
 
-            buffer = model.Images.Where(x => x.ContentLength > 0).AsQueryable().To<AddCategoryRequestModel>().ToList();
 
             foreach (var item in model.Images)
             {

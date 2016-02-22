@@ -3,7 +3,7 @@
     using Models.Shop;
     using System;
     using System.Collections.Generic;
-
+    using System.Linq;
     public class SeedData
     {
         public ICollection<Size> Sizes;
@@ -12,6 +12,7 @@
         public ICollection<GenderType> GenderTypes;
         public ICollection<Shipping> ShippingTypes;
         public ICollection<CategoryImage> CategoryFrontImages;
+        public ICollection<Product> Products;
 
         public SeedData()
         {
@@ -21,12 +22,14 @@
             this.GenderTypes = new List<GenderType>();
             this.ShippingTypes = new List<Shipping>();
             this.CategoryFrontImages = new List<CategoryImage>();
+            this.Products = new List<Product>();
             this.PopulateGenders();
             this.PopulateColors();
             this.PopulateShippingType();
             this.PopulateCategories();
             this.PopulateSizes();
             this.PopulateCategoryFrontImages();
+            this.PopulateProductsInitial();
         }
 
         public void PopulateSizes()
@@ -73,6 +76,16 @@
                 new Color { Name = "Navy" });
             this.Colors.Add(
                 new Color { Name = "Red" });
+        }
+
+
+        public void PopulateProductsInitial()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var current = new Product { Title = "Product" + i,Description = "Description " + i, CategoryId = 2, GenderId = 1, Price = 15.0m + i };
+                this.Products.Add(current);
+            }
         }
 
         public void PopulateShippingType()

@@ -24,6 +24,7 @@
                         command.Destroy();
                     });
                 })
+                .Editable(edit => edit.Mode(GridEditMode.PopUp))
                 .DataSource(datasource =>
                        datasource
                          .Ajax()

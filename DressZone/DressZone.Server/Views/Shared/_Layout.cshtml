@@ -204,7 +204,7 @@
                                     <div class="one-column">
                                         <ul>
                                             <li><span class="mega-headline">Manage Categories</span></li>
-                                            <li>@Html.ActionLink("All","All","Categories",new { area = "Admin" },null)</li>
+                                            <li>@Html.ActionLink("ManageAll", "All","Categories",new { area = "Admin" },null)</li>
                                             <li>@Html.ActionLink("Create Category", "AddCategory", "Categories", new { area = "Admin" }, null)</li>
                                         </ul>
                                     </div>
@@ -212,13 +212,13 @@
                                     <div class="one-column">
                                         <ul>
                                             <li><span class="mega-headline">Manage Products</span></li>
-                                            <li>@Html.ActionLink("Add Image","AddImage","Images",new { area = "Admin"},null)</li>
+                                            <li>@Html.ActionLink("ManageAll","All","ProductsCreate",new { area = "Admin"},null)</li>
                                         </ul>
                                     </div>
                                     <div class="one-column">
                                         <ul>
                                             <li><span class="mega-headline">Manage Users</span></li>
-                                            <li>@Html.ActionLink("All", "All", "User", new { area = "Admin" }, null)</li>
+                                            <li>@Html.ActionLink("ManageAll", "All", "User", new { area = "Admin" }, null)</li>
                                         </ul>
                                     </div>
                                     <div class="one-column">
@@ -235,6 +235,7 @@
                 </nav>
             </div>
         </div>
+        @RenderSection("kendo", required: false)
        
         <div class="container body-content">
             @RenderBody()
@@ -359,7 +360,6 @@
         <script src="~/Scripts/themeScripts/custom.js"></script>
         @RenderSection("scripts", required: false)
         @Scripts.Render("~/bundles/private-functions");
-        @RenderSection("kendo",required:false)
         <!-- Style Switcher
         ================================================== -->
         <script src="~/Scripts/themeScripts/switcher.js"></script>

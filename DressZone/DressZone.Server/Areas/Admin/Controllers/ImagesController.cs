@@ -29,27 +29,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult SaveImage(AddImageResponseModel imageFiles)
         {
-            //var imagesToDatabase = new List<CategoryImage>();
-
-            //foreach (var item in imageFiles.imageFiles)
-            //{
-            //    if (item != null)
-            //    {
-            //        imagesToDatabase.Add(new CategoryImage
-            //        {
-            //            CategoryName = imageFiles.CategoryName,
-            //            ContentLength = item.ContentLength,
-            //            FileName = item.FileName,
-            //            IsFrontImage = imageFiles.IsFrontImage,
-            //            OriginalFileName = item.FileName,
-            //            InputStream = item.InputStream,
-            //            ContentType = item.ContentType,
-            //        });
-            //    }
-            //}
-
-            //imageService.SaveImageFile(imagesToDatabase);
-            //imageService.SaveImageRecord(imagesToDatabase);
+          
             return null;
         }
     }

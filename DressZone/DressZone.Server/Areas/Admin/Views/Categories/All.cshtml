@@ -18,7 +18,8 @@
                 {
                     columns.Bound(c => c.Name);
                     columns.Bound(c => c.Description);
-                    columns.Bound(c => c.FrontImageName);
+                    columns.Bound(c => c.FrontImageName).ClientTemplate("<img src='" + Url.Content("~/images/Uploaded/")
+                        + "#=FrontImageName#'/>");
                     columns.Bound(c => c.Quantity);
                     columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
                     columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
@@ -30,6 +31,7 @@
                         command.Destroy();
                     });
                 })
+                .Editable(edit => edit.Mode(GridEditMode.PopUp))
                 .DataSource(datasource =>
                        datasource
                          .Ajax()

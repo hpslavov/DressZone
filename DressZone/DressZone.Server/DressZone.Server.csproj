@@ -202,7 +202,8 @@
     <Compile Include="Areas\Admin\Controllers\CartController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImagesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductImagesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsCreateController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\KendoHtmlHelpers\KendoHtmlHelper.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\AddCategoryRequestModel.cs" />
@@ -213,6 +214,9 @@
     <Compile Include="Areas\Admin\Models\ViewModels\EditCategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\ImageRequestModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\MemoryFile.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Products\AddProductImageRequestModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Products\AddProductImageViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Products\GridCreateProductViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\Users\GridViewUserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -232,7 +236,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\AdminImages\loading.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\base.css" />
@@ -437,6 +440,13 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Areas\Admin\Views\User\All.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsCreate\All.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Colors.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Genders.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Sizes.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Images.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductImages\AddImages.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

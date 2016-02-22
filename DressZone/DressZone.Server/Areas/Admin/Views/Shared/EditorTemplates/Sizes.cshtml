@@ -1,0 +1,9 @@
+﻿@using System.Collections
+
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewData["Sizes"])
+.OptionLabel("- Select Size - ")
+.DataValueField("Id")
+.DataTextField("Name")
+.Name("Size")
+)

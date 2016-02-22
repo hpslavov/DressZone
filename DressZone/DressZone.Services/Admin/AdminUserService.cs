@@ -72,9 +72,9 @@ namespace DressZone.Services.Admin
 
         public User EditUser(User user)
         {
-            user.ModifiedOn = DateTime.Now;
             this.users.PartialModifiedUpdated(user);
             this.users.SaveChanges();
+            user = this.GetByEmail(user.Email);
             return user;
         }
 

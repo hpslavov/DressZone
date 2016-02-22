@@ -11,8 +11,7 @@
                 .Name(name)
                 .Pageable(pager => pager.Refresh(true))
                 .Sortable()
-                .Filterable(filter => filter.Mode(GridFilterMode.Menu))
-                .Editable(edit => edit.Mode(GridEditMode.PopUp));
+                .Filterable(filter => filter.Mode(GridFilterMode.Menu));
         }
     }
 }

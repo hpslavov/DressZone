@@ -19,6 +19,9 @@
             this.reviews = new HashSet<Review>();
             this.sizes = new HashSet<Size>();
             this.CreatedOn = DateTime.Now;
+            this.Quantity = 1;
+            this.Rating = 0;
+            this.Discount = 0;
         }
 
         public int Id { get; set; }

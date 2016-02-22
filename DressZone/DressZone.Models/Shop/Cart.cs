@@ -13,7 +13,6 @@
 
         public Cart()
         {
-            this.Id = Guid.NewGuid().ToString().Replace("-",string.Empty);
             this.subItems = new List<CartSubItem>();
         }
 

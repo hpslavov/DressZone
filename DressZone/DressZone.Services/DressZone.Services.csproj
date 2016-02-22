@@ -68,8 +68,15 @@
     <Compile Include="Contracts\IAdminUserService.cs" />
     <Compile Include="Contracts\ICategoriesService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
+    <Compile Include="Contracts\IAdminProductsService.cs" />
+    <Compile Include="DTO\ProductInfoDTO.cs" />
+    <Compile Include="DTO\DropDownDTO.cs" />
+    <Compile Include="DTO\ProductImageInputDTO.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Contracts\IAdminProductImagesService.cs" />
+    <Compile Include="Admin\AdminProductImagesService.cs" />
+    <Compile Include="Admin\AdminProductsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DressZone.Context\DressZone.Context.csproj">
@@ -88,6 +95,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Shop\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

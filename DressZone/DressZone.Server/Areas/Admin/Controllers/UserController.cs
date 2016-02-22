@@ -20,7 +20,6 @@ namespace DressZone.Server.Areas.Admin.Controllers
     public class UserController : AdminBaseController
     {
         private IAdminUserService userService;
-        private ApplicationUserManager _userManager;
 
         public UserController(IAdminUserService service)
         {
@@ -31,18 +30,6 @@ namespace DressZone.Server.Areas.Admin.Controllers
         public ActionResult All()
         {
             return View();
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
         }
 
 
@@ -76,8 +63,11 @@ namespace DressZone.Server.Areas.Admin.Controllers
             var userManager = this.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             userManager.RemoveFromRole(userFromDb.Id, currentRole.Name);
             userManager.AddToRole(userFromDb.Id, userModel.Role);
+            userFromDb.IsDeleted = userModel.IsDeleted;
+            userFromDb.ModifiedOn = DateTime.Now;
 
-            this.userService.EditUser(userFromDb);
+
+            userFromDb = this.userService.EditUser(userFromDb);
            
             var resultViewModel = this.Mapper.Map<GridViewUserViewModel>(userFromDb);
             resultViewModel.Role = this.userService.GetRole(resultViewModel.Email).Name;
