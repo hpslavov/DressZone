@@ -78,7 +78,9 @@
 
         private void SaveByteArrayToFileSystem(byte[] imageBytes,string fileName)
         {
-            File.WriteAllBytes(this.filePathFileSystem + @"DressZone.Server\images\Uploaded\" + fileName, imageBytes);
+            var path = this.filePathFileSystem + @"DressZone.Server\images\Uploaded\Categories\" + fileName;
+
+            File.WriteAllBytes(this.filePathFileSystem + path + fileName, imageBytes);
         }
     
         private byte[] ImageToByteArraybyMemoryStream(Image image)

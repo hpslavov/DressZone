@@ -71,13 +71,13 @@ namespace DressZone.Server.Areas.Admin.Controllers
             images.SaveImageFile(imagesToDatabase);
             images.SaveImageRecord(imagesToDatabase);
 
-            return Json("All","Categories");
+            return View("All");
         }
 
         [HttpGet]
         public ActionResult All()
         {
-            return View("All");
+            return View();
         }
 
         [HttpPost]

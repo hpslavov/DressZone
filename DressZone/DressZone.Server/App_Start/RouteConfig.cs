@@ -17,7 +17,7 @@ namespace DressZone.Server
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "DressZone.Server.Areas.Admin.Controllers" }
+                namespaces: new string[] { "DressZone.Server.Areas.Admin.Controllers", "DressZone.Server.Areas.Admin.Controllers" }
             );
         }
     }
