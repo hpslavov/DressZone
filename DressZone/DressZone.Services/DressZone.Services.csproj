@@ -70,6 +70,8 @@
     <Compile Include="Contracts\IHomePageService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\IAdminProductsService.cs" />
+    <Compile Include="Contracts\IProductDetailsService.cs" />
+    <Compile Include="Contracts\IPublicCategoriesService.cs" />
     <Compile Include="DTO\DropDownDTO.cs" />
     <Compile Include="DTO\ProductImageInputDTO.cs" />
     <Compile Include="DTO\ProductInfoDTO.cs" />
@@ -79,6 +81,8 @@
     <Compile Include="Contracts\IAdminProductImagesService.cs" />
     <Compile Include="Admin\AdminProductImagesService.cs" />
     <Compile Include="Admin\AdminProductsService.cs" />
+    <Compile Include="Shop\ProductDetailsService.cs" />
+    <Compile Include="Shop\PublicCategoriesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DressZone.Context\DressZone.Context.csproj">

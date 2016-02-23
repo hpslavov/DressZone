@@ -9,7 +9,7 @@
     {
         private ICollection<CategoryImage> images;
 
-        public Category(): base()
+        public Category()
         {
             this.images = new List<CategoryImage>();
             this.CreatedOn = DateTime.Now;
