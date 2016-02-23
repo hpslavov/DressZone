@@ -1,0 +1,47 @@
+﻿@model DressZone.Server.Areas.Admin.Models.ViewModels.Products.GridCreateProductViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section kendo {
+    @Scripts.Render("~/bundles/kendo")
+}
+<div>
+    <h3>Categories</h3>
+    @(Html.Kendo().Grid<DressZone.Server.Areas.Admin.Models.ViewModels.Products.GridCreateProductViewModel>()
+                                    .Name("gridProducts")
+                                    .Columns(columns =>
+                                    {
+                                        columns.Bound(c => c.Id).ClientTemplate("<a href='/Admin/ProductImages/AddImages/?ProductId=#=Id#&Title=#=Title#&CategoryName=#=Category.Name#'>#=Id#</a>");
+                                        columns.Bound(c => c.Title);
+                                        columns.Bound(c => c.Description);
+                                        columns.Bound(c => c.Color);
+                                        columns.Bound(c => c.Size);
+                                        columns.Bound(c => c.Price);
+                                        columns.Bound(c => c.Discount);
+                                        columns.Bound(c => c.Gender);
+                                        columns.Bound(c => c.Quantity);
+                                        columns.Bound(c => c.Category);
+                                        columns.Command(c =>
+                                        {
+                                            c.Edit();
+                                        });
+                                    })
+                                    .ToolBar(tool =>
+                                    {
+                                        tool.Create();
+                                        tool.Save();
+                                    })
+                                    .Sortable()
+                                    .Filterable()
+                                    .Editable(edit => edit.Mode(GridEditMode.InCell))
+                                .DataSource(datasource =>
+                                       datasource
+                                         .Ajax()
+                                         .Batch(true)
+                                         .PageSize(10)
+                                         .Model(m => m.Id(x => x.Id))
+                                 .Read(read => read.Action("All", "ProductsCreate", new { area = "Admin" }))
+                                 .Create(create => create.Action("Create", "ProductsCreate", new { area = "Admin" }))
+                                 .Update(update => update.Action("UpdateExisting", "ProductsCreate", new { area = "Admin" }))))
+
+</div>

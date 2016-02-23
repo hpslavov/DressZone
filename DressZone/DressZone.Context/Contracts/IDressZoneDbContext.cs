@@ -10,7 +10,7 @@
     {
         int SaveChanges();
 
-        IQueryable<User> DbUsers { get; set; }
+        IDbSet<User> GetAllUsers();
 
         IDbSet<GenderType> GenderTypes { get; set; }
 

@@ -1,0 +1,9 @@
+﻿@using System.Collections
+
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewData["Genders"])
+.OptionLabel("- Select Gender - ")
+.DataValueField("Id")
+.DataTextField("Name")
+.Name("Gender")
+)

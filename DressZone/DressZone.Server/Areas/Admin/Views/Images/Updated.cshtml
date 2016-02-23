@@ -1,0 +1,29 @@
+﻿@*@model IEnumerable<DressZone.Models.Shop.CategoryImage>
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @{
+        var currentItemName = string.Empty;
+    }
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <h3>Added</h3>
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li class="active" style="display:inline-block">
+                        <span><strong><h3>@item.FileName</h3></strong></span>
+                        <span><img src="~/images/Uploaded/" style="width:150px; height:100px;" /></span>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3>Total Updated: @Model.Count()</h3>
+        </div>
+
+    </div>*@
+

@@ -19,6 +19,10 @@ namespace DressZone.Context.Migrations
         protected override void Seed(DressZoneDbContext context)
         {
             var passHasher = new PasswordHasher();
+            var seeder = new SeedData();
+
+           
+
 
             if (!context.Roles.Any(r => r.Name == "Admin" || r.Name == "Customer"))
             {
@@ -48,7 +52,7 @@ namespace DressZone.Context.Migrations
 
             if (!context.GenderTypes.Any(g => g.Name == "Male"))
             {
-                var seeder = new SeedData();
+                
                 foreach (var gender in seeder.GenderTypes)
                 {
                     context.GenderTypes.Add(gender);
@@ -70,13 +74,30 @@ namespace DressZone.Context.Migrations
                     context.Shippings.Add(shipping);
                 }
 
-                foreach (var category in seeder.Categories)
+                foreach (var prod in seeder.Products)
                 {
-                    context.Categories.Add(category);
+                    foreach (var color in seeder.Colors)
+                    {
+                        prod.Colors.Add(color);
+                    }
+                    context.Products.Add(prod);
+                }
+
+                foreach (var catImage in seeder.CategoryFrontImages)
+                {
+                    context.CategoryImages.Add(catImage);
+
+                    foreach (var category in seeder.Categories)
+                    {
+                        if (category.Name == catImage.CategoryName)
+                        {
+                            category.FrontImageName = catImage.FileName;
+                            category.Images.Add(catImage);
+                        }
+                        context.Categories.Add(category);
+                    }
                 }
             }
-
-           
         }
     }
 }

@@ -1,0 +1,13 @@
+﻿@using (Html.BeginForm("Create", "ProductsCreate",
+                                     FormMethod.Post, new { area = "Admin", id = "uploadForm", enctype = "multipart/form-data" }))
+{
+
+    @(Html.Kendo().Upload()
+            .Name("Images")
+            .Enable(true)
+            .Multiple(true)
+    )
+
+    <input type="submit" value="Send" class="t-button" />
+    <input type="reset" value="Reset" class="t-button" />
+}

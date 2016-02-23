@@ -1,13 +1,22 @@
 ﻿namespace DressZone.Models.Shop
 {
+    using Common.Contracts;
     using DressZone.Models.Shop.Common;
-
-    public class GenderType : BaseModel
+    using System;
+    public class GenderType 
     {
-        public GenderType() : base()
-        {
 
+        public GenderType()
+        {
+            this.CreatedOn = DateTime.Now;
         }
+
+        public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? DeletedOn { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime? ModifiedOn { get; set; }
     }
+
 }

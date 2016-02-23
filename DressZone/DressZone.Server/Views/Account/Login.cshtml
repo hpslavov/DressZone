@@ -11,15 +11,18 @@
         <h3 class="headline">Login</h3><span class="line" style="margin-bottom:20px;margin-left:40px;"></span><div class="clearfix"></div>
 
 
-        @using (Html.BeginForm("Login", "Account", new { }, FormMethod.Post, new { @class = "login" }))
+        @using (Html.BeginForm("Login", "Account", new { area = string.Empty }, FormMethod.Post, new { @class = "login" }))
         {
             @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
             <p class="form-row form-row-wide">
-                <label for="username">Username or Email Address: <span class="required">*</span></label>
+                @Html.ValidationMessageFor(u => u.Email)
+                <label for="email">Email Address: <span class="required">*</span></label>
                 @Html.TextBoxFor(m => m.Email, new { @class = "input-text" })
             </p>
 
             <p class="form-row form-row-wide">
+                @Html.ValidationMessageFor(u => u.Password)
                 <label for="password">Password: <span class="required">*</span></label>
                 @Html.TextBoxFor(m => m.Password, new { @class = "input-text", type = "password" })
             </p>

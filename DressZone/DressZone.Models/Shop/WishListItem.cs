@@ -1,13 +1,16 @@
 ﻿namespace DressZone.Models.Shop
 {
+    using Common.Contracts;
     using DressZone.Models.Shop.Common;
-
-    public class WishListItem : BaseModel
+    using System;
+    public class WishListItem 
     {
-        public WishListItem():base()
+        public WishListItem()
         {
-
+            this.CreatedOn = DateTime.Now;
         }
+
+        public int Id { get; set; }
 
         public int? ProductId { get; set; }
 
@@ -18,5 +21,14 @@
         public decimal Price { get; set; }
 
         public bool StockStatus { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
     }
 }

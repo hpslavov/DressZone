@@ -1,0 +1,13 @@
+﻿@using System.Collections
+
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewData["Colors"])
+.Name("Color")
+.OptionLabel("- Select Color - ")
+.DataValueField("Id")
+.DataTextField("Name")
+)
+
+
+
+

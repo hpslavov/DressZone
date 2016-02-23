@@ -1,21 +1,30 @@
 ﻿namespace DressZone.Models.Shop
 {
+    using Common.Contracts;
     using DressZone.Models.Shop.Common;
+    using System;
     using System.Collections;
     using System.Collections.Generic;
-    public class Product : BaseModel
+    public class Product
     {
         private ICollection<Color> colors;
         private ICollection<ProductImage> images;
+        private ICollection<Size> sizes;
         private ICollection<Review> reviews;
 
-        public Product() : base()
+        public Product()
         {
             this.colors = new HashSet<Color>();
             this.images = new HashSet<ProductImage>();
             this.reviews = new HashSet<Review>();
+            this.sizes = new HashSet<Size>();
+            this.CreatedOn = DateTime.Now;
+            this.Quantity = 1;
+            this.Rating = 0;
+            this.Discount = 0;
         }
 
+        public int Id { get; set; }
 
         public string Title { get; set; }
 
@@ -33,9 +42,19 @@
 
         public virtual Category Category { get; set; }
 
-        public int? SizeId { get; set; }
+        public virtual ICollection<Size> Sizes 
+        {
+            get { return this.sizes; }
+            set { this.sizes = value; }
+        }
 
-        public virtual Size Size { get; set; }
+        public DateTime? CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
 
         public virtual ICollection<Color> Colors
         {

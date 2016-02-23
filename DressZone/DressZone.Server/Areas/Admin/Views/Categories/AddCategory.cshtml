@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Container -->
+<div class="container">
+
+    <!-- Contact Form -->
+    <div class="twelve columns">
+        <div class="extra-padding left">
+            <h3 class="headline">Add Category</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+
+            <!-- Contact Form -->
+            <section id="contact">
+
+                <!-- Success Message -->
+                <mark id="message"></mark>
+
+                @using (Ajax.BeginForm("AddCategory", "Categories", new AjaxOptions()
+                {
+                    HttpMethod = "Post",
+                }, new { id = "contactform", enctype = "multipart/form-data" }))
+                {
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Category Name:</label>
+                                <input name="CategoryName" type="text" id="category-name" />
+                                <label>Upload File: <span>*</span></label>
+                                <input name="Images" type="file" id="image-name" multiple="multiple" />
+                            </div>
+                            <div class="col-md-5">
+                                <div id="image-holder"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label>Category Description: <span>*</span></label>
+                            <textarea name="CategoryDescription" cols="40" rows="3" id="comment" spellcheck="true"></textarea>
+                        </div>
+
+                    </fieldset>
+                    <div id="result"></div>
+                    <input type="submit" id="submit" value="Add Category" />
+                        <div class="clearfix"></div>
+                }
+            </section>
+            <!-- Contact Form / End -->
+        </div>
+    </div>
+</div>
+<!-- Container / End -->
+
+<div class="margin-top-50"></div>
+
+@section scripts{
+    <script>
+        $('#image-name').on('change', function () {
+            var imageName = $('#image-name').val();
+            var cleanedName = getImageName(imageName);
+            var urlImage = "/images/Uploaded/" + cleanedName;
+            var imageHolder = $('#image-holder');
+            imageHolder.empty();
+            $.ajax({
+                url: urlImage,
+                method: "GET",
+                contentType: "text/html",
+                success: function (data) {
+                    $('<img />', {
+                        'src': urlImage,
+                        'style':'width:150px; height:140px;'
+                    }).appendTo(imageHolder);
+                }
+            });
+        })
+
+
+        function getImageName(name) {
+            var delta = 'C:\\fakepath\\';
+            var result = name.substring(delta.length);
+            return result;
+        }
+
+    </script>
+}

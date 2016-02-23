@@ -1,0 +1,100 @@
+﻿@model DressZone.Server.Areas.Admin.Models.ViewModels.EditCategoryImageRequestModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>@Model.CategoryName</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li>Accessories</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<!-- Content
+================================================== -->
+<!-- Container -->
+<div class="container">
+
+    <!-- Slider -->
+    <div class="eleven columns">
+        <div class="slider-padding">
+            <div id="basic-slider" class="royalSlider rsDefault">
+                <a href="" class="mfp-gallery" title="First Title"><img class="rsImg" src="~/images/Uploaded/@Model.OriginalImageName" alt="" /></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="five columns">
+        <div class="product-page">
+
+            <h3 class="headline">Category Description</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+
+            <!-- Project Description -->
+            <section class="project-section">
+                <!-- Text Parapgraph -->
+                <p class="margin-bottom-5">@Model.CategoryDescription </p>
+
+                <!-- Share Buttons -->
+                <div class="share-buttons">
+                    <ul>
+                        <li><a href="#">Share</a></li>
+                        <li class="share-facebook"><a href="#">Facebook</a></li>
+                        <li class="share-pinit"><a href="#">Pin It</a></li>
+                        <li class="share-twitter"><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </section>
+
+            <br>
+
+            <!-- Accordion -->
+            <div class="accordion">
+
+                <!-- Section 1 -->
+                <h3><span class="ui-accordion-header-icon ui-icon ui-accordion-icon"></span><i class="fa fa-flag"></i> Project Goals</h3>
+                <div>
+                    <p>Mauris mauris ante, blandit et, lorem ultrices, susceros. Nam mi. Proin viverra leo ut odio curabitur malesuada.</p>
+                </div>
+
+                <!-- Section 2 -->
+                <h3><span class="ui-accordion-header-icon ui-icon ui-accordion-icon"></span><i class="fa fa-cog"></i> Technologies</h3>
+                <div>
+                    <ul class="list-3">
+                        <li>Photoshop</li>
+                        <li>Zend Framework</li>
+                        <li>Java Script</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <h3><span class="ui-accordion-header-icon ui-icon ui-accordion-icon"></span><i class="fa fa-user"></i> Client</h3>
+                <div>
+                    <p class="margin-bottom-10">Aliquam risus, molestie et, porta lorem ipsum risus. Quisque lobortis. Phasellus pellentesque purus dolor in massa aenean in pede.</p>
+                    <strong>Website:</strong> <a href="#">www.envato.com</a>
+                </div>
+
+            </div>
+            <!-- Accordion / End -->
+            <br>
+        </div>
+    </div>
+
+</div>
+
+<div class="margin-top-50"></div>

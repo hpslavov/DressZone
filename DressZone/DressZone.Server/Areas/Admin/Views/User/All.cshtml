@@ -1,0 +1,38 @@
+﻿@using DressZone.Server.Areas.Admin.KendoHtmlHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section kendo {
+    @Scripts.Render("~/bundles/kendo")
+}
+<div>
+    <h3>Categories</h3>
+    @(Html.AdminGrid<DressZone.Server.Areas.Admin.Models.ViewModels.Users.GridViewUserViewModel>("gridUsers")
+                .Columns(columns =>
+                {
+                    columns.Bound(c => c.UserName);
+                    columns.Bound(c => c.Role);
+                    columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
+                    columns.Bound(c => c.Email);
+                    columns.Bound(c => c.IsDeleted);
+                    columns.Bound(c => c.ModifiedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
+                    columns.Bound(c => c.DeletedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
+                    columns.Bound(c => c.Id);
+                    columns.Command(command =>
+                    {
+                        command.Edit();
+                        command.Destroy();
+                    });
+                })
+                .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                .DataSource(datasource =>
+                       datasource
+                         .Ajax()
+                         .PageSize(10)
+                         .Model(m => m.Id(c => c.Id))
+                         .Read(read => read.Action("All", "User", new { area = "Admin" }))
+                         .Update(update => update.Action("UpdateExisting", "User", new { area = "Admin" }))
+                         .Destroy(destroy => destroy.Action("Delete", "User", new { area = "Admin" }))))
+
+</div>
+

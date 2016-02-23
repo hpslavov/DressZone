@@ -1,0 +1,60 @@
+﻿@model DressZone.Server.Areas.Admin.Models.ViewModels.AllCategoriesViewModel
+
+<span class="og-close"></span>
+<div class="og-details">
+    <h3>@Model.Name</h3>
+    <div class="twelve columns">
+        <div class="extra-padding left">
+            <h3 class="headline">Edit Category</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+
+            <!-- Contact Form -->
+            <section id="contact">
+
+                <!-- Success Message -->
+                <mark id="message"></mark>
+
+                @using (Ajax.BeginForm("EditCategory", "Categories", new AjaxOptions()
+                {
+                    HttpMethod = "Post",
+                }, new { id = "contactform", enctype = "multipart/form-data" }))
+                {
+                    <fieldset>
+                        <div>
+                            <label>Category Name:</label>
+                            @Html.EditorFor(x => x.Name)
+                        </div>
+
+                        <div>
+                            <label>Change Front Picture: <span>*</span></label>
+                            <input name="Images" type="file" id="name" multiple="multiple" />
+
+                        </div>
+
+                        <div>
+                            <label>Change Category Description: <span>*</span></label>
+                            @Html.EditorFor(x => x.Description)
+                            @*<textarea name="CategoryDescription" cols="40" rows="3" id="comment" spellcheck="true"></textarea>*@
+                        </div>
+
+                    </fieldset>
+                    <div id="result"></div>
+                    <input type="submit" id="submit" value="Edit Category" />
+                        <div class="clearfix"></div>
+                }
+            </section>
+            <!-- Contact Form / End -->
+        </div>
+    </div>
+    <!-- Share Buttons -->
+    @*<div class="share-buttons" style="display:block">
+        <ul>
+            <li><a href="#">Share</a></li>
+            <li class="share-facebook"><a href="#">Facebook</a></li>
+            <li class="share-twitter"><a href="#">Twitter</a></li>
+            <li class="share-gplus"><a href="#">Google Plus</a></li>
+            <li class="share-pinit"><a href="#">Pin It</a></li>
+        </ul>
+    </div>*@
+
+</div>
+

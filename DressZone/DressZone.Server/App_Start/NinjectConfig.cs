@@ -64,9 +64,11 @@ namespace DressZone.Server.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(x => 
+            kernel.Bind<IDressZoneDbContext>().To<DressZoneDbContext>().InRequestScope();
+
+            kernel.Bind(x =>
             {
-                x.From("DressZone.Context")
+                x.From("DressZone.Services")
                 .SelectAllClasses()
                 .BindDefaultInterface();
             });

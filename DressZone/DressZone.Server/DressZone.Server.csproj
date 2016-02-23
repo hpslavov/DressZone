@@ -48,6 +48,10 @@
       <HintPath>..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Kendo.Mvc, Version=2016.1.112.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET MVC Q1 2016\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -193,6 +197,27 @@
     <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CartController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ImagesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductImagesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsCreateController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\KendoHtmlHelpers\KendoHtmlHelper.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\AddCategoryRequestModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\AddCategoryViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\AddImageResponseModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\AllCategoriesViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\EditCategoryImageRequestModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\EditCategoryViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\ImageRequestModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\MemoryFile.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Products\AddProductImageRequestModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Products\AddProductImageViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Products\GridCreateProductViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Users\GridViewUserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -223,6 +248,10 @@
     <Content Include="Content\dark.css" />
     <Content Include="Content\gray.css" />
     <Content Include="Content\green.css" />
+    <Content Include="Content\kendo\kendo.bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.common.core.min.css" />
+    <Content Include="Content\kendo\kendo.common.min.css" />
+    <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="Content\navy.css" />
     <Content Include="Content\olive.css" />
     <Content Include="Content\orange.css" />
@@ -230,6 +259,7 @@
     <Content Include="Content\pink.css" />
     <Content Include="Content\purple.css" />
     <Content Include="Content\red.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\yellow.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\responsive.css" />
@@ -364,7 +394,19 @@
     <Content Include="images\team-03.jpg" />
     <Content Include="images\titlebar_bg_01.jpg" />
     <Content Include="images\titlebar_bg_02.jpg" />
+    <Content Include="images\Uploaded\black_gas_masks_toxic_desktop_1024x940_hd-wallpaper-1072061.jpg" />
+    <Content Include="images\Uploaded\madam_im_atom.png" />
+    <Content Include="images\Uploaded\Pulse-1680x1050-wide-wallpapers.net_ %281%29.jpg" />
+    <Content Include="images\Uploaded\SAMPLES\bags.jpg" />
+    <Content Include="images\Uploaded\SAMPLES\jackets.jpg" />
+    <Content Include="images\Uploaded\SAMPLES\jeans.jpg" />
+    <Content Include="images\Uploaded\SAMPLES\skirts.jpg" />
+    <Content Include="images\Uploaded\SAMPLES\sweaters.jpg" />
+    <Content Include="images\Uploaded\SAMPLES\ties.jpg" />
+    <Content Include="images\Uploaded\SAMPLES\trousers.jpg" />
     <Content Include="images\visa.png" />
+    <Content Include="Libraries\kendo\Kendo.Mvc.dll" />
+    <Content Include="Libraries\kendo\Kendo.Mvc.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -374,6 +416,37 @@
     <Content Include="fonts\fontello.eot" />
     <Content Include="fonts\fontello.ttf" />
     <Content Include="fonts\fontello.woff" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\AddImage.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_ResultAddImages.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\AllImages.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\Updated.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\All.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\EditFrontImage.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditCategory.cshtml" />
+    <Content Include="Content\kendo\kendo.bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Areas\Admin\Views\User\All.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsCreate\All.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Colors.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Genders.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Sizes.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Images.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductImages\AddImages.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -382,6 +455,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo\kendo.all.min.js" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
@@ -440,12 +515,19 @@
     <Content Include="Views\Account\ChooseOption.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Scripts\kendo\kendo.all.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Areas\Admin\Views\DisplayTemplates\" />
+    <Folder Include="Areas\Admin\Views\Shared\DisplayTemplates\" />
     <Folder Include="Content\css\colors\" />
+    <Folder Include="Content\kendo\Default\" />
     <Folder Include="images\bg\" />
     <Folder Include="images\portfolio\" />
+    <Folder Include="Views\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -467,6 +549,10 @@
     <ProjectReference Include="..\DressZone.Repository\DressZone.Repository.csproj">
       <Project>{c866cec7-62ec-45cd-92d4-93cb8e82d42b}</Project>
       <Name>DressZone.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DressZone.Services\DressZone.Services.csproj">
+      <Project>{06512b96-996a-4872-9fca-915de2dae254}</Project>
+      <Name>DressZone.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
