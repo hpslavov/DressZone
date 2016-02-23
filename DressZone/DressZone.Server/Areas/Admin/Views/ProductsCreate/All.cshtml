@@ -11,7 +11,7 @@
                                     .Name("gridProducts")
                                     .Columns(columns =>
                                     {
-                                        columns.Bound(c => c.Id).ClientTemplate("<a href='/Admin/ProductImages/AddImages/?ProductId=#=Id#&Title=#=Title#&CategoryName=#=Category.Name#'>#=Id#</a>");
+                                        columns.Bound(c => c.Id);//;.ClientTemplate("<a href='/Admin/ProductImages/AddImages/?ProductId=#=Id#&Title=#=Title#&CategoryName=#=Name#'>#=Id#</a>");
                                         columns.Bound(c => c.Title);
                                         columns.Bound(c => c.Description);
                                         columns.Bound(c => c.Color);
@@ -24,6 +24,7 @@
                                         columns.Command(c =>
                                         {
                                             c.Edit();
+                                            c.Destroy();
                                         });
                                     })
                                     .ToolBar(tool =>

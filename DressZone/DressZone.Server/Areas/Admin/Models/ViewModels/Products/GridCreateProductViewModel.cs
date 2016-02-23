@@ -20,15 +20,19 @@
 
         public decimal Price { get; set; }
 
+        [IgnoreMap]
         [UIHint("Colors")]
         public DropDownDTO Color { get; set; }
 
+        [IgnoreMap]
         [UIHint("Sizes")]
         public DropDownDTO Size { get; set; }
 
+        [IgnoreMap]
         [UIHint("Category")]
         public DropDownDTO Category { get; set; }
 
+        [IgnoreMap]
         [UIHint("Genders")]
         public DropDownDTO Gender { get; set; }
 

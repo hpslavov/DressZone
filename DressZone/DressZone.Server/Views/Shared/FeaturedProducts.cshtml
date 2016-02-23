@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DressZone.Server.Models.DTO.Home.HomeCategoryDTO>
+<div class="container">
+
+    @foreach (var category in Model)
+    {
+        <div class="one-third column">
+            <a href="@category.Id" class="img-caption">
+                <figure>
+                    <img src="~/images/Uploaded/Categories/@category.FrontImageName" alt="@category.Description" />
+                    <figcaption>
+                        <h3>@category.Name</h3>
+                        <span>@category.Description</span>
+                    </figcaption>
+                </figure>
+            </a>
+        </div>
+    }
+</div>
+<div class="clearfix"></div>

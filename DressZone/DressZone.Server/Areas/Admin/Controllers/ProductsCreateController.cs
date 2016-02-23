@@ -26,9 +26,13 @@ namespace DressZone.Server.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [OutputCache(Duration = 3000)]
         public ActionResult All()
         {
-            FillInDropDowns();
+            ViewData["Colors"] = this.products.GetColorNames();
+            ViewData["Categories"] = this.products.GetCategoryNames();
+            ViewData["Sizes"] = this.products.GetSizesNames();
+            ViewData["Genders"] = this.products.GetGenderNames();
 
             return View();
         }
@@ -36,19 +40,19 @@ namespace DressZone.Server.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult All([DataSourceRequest]DataSourceRequest productsModel)
         {
+            
+
             var allProducts = this.products
                                     .GetAllWithDeleted()
-                                    .AsQueryable()
+                                    .To<GridCreateProductViewModel>()
                                     .ToList();
-
-            var result = allProducts.ToDataSourceResult(productsModel);
-
-            return Json(result);
+            
+            return Json(allProducts.ToDataSourceResult(productsModel));
         }
 
-       
+
         [HttpPost]
-        public ActionResult Create([DataSourceRequest]DataSourceRequest request,[Bind(Prefix = "models[0]")]GridCreateProductViewModel modelToCreate)
+        public ActionResult Create([DataSourceRequest]DataSourceRequest request, [Bind(Prefix = "models[0]")]GridCreateProductViewModel modelToCreate)
         {
             var productToCreate = new Product
             {
@@ -68,21 +72,11 @@ namespace DressZone.Server.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateExisting([DataSourceRequest]DataSourceRequest request, [Bind(Prefix ="models[0]")]GridCreateProductViewModel modelToCreate)
+        public ActionResult UpdateExisting([DataSourceRequest]DataSourceRequest request, [Bind(Prefix = "models[0]")]GridCreateProductViewModel modelToCreate)
         {
             var productToAdd = new List<string>();
-            
+
             return Json(modelToCreate);
         }
-
-        private void FillInDropDowns()
-        {
-            ViewData["Colors"] = this.products.GetColorNames();
-            ViewData["Categories"] = this.products.GetCategoryNames();
-            ViewData["Sizes"] = this.products.GetSizesNames();
-            ViewData["Genders"] = this.products.GetGenderNames();
-        }
-
-      
     }
 }

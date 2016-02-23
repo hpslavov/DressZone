@@ -17,13 +17,13 @@
                 .Columns(columns =>
                 {
                     columns.Bound(c => c.Name);
-                    columns.Bound(c => c.Description);
-                    columns.Bound(c => c.FrontImageName).ClientTemplate("<img src='" + Url.Content("~/images/Uploaded/")
-                        + "#=FrontImageName#'/>");
-                    columns.Bound(c => c.Quantity);
+                    columns.Bound(c => c.Description).Width(150);
+                    columns.Bound(c => c.FrontImageName).ClientTemplate("<img style=\"width:140; height:120px;\" src='" + Url.Content("~/images/Uploaded/Categories/")
+                        + "#=FrontImageName#'/>").Width(220);
+                    columns.Bound(c => c.Quantity).Width(100);
                     columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
                     columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
-                    columns.Bound(c => c.IsDeleted);
+                    columns.Bound(c => c.IsDeleted).Width(150);
                     columns.Bound(c => c.DeletedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
                     columns.Command(command =>
                     {
