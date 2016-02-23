@@ -40,11 +40,10 @@
                     <fieldset>
                         <div class="row">
                             <div class="col-md-5">
-                                <input type="hidden" value="@Model.ProductId" name="ProductId" />
-                                <input type="hidden" id="category" value="@Model.CategoryName" name="CategoryName" />
-
-                                <label>Product Name:<strong>@Model.Title</strong></label>
-                                <label>Product Category:<strong>@Model.CategoryName</strong></label>
+                                <label>Product Id:<strong></strong></label><br />
+                                <input type="number" value="@Model.ProductId" name="ProductId" /><br />
+                                <label>Product Category:<strong>@Model.CategoryName</strong></label><br />
+                                <input type="text" id="category" value="@Model.CategoryName" name="CategoryName" /><br />
 
                                 <label>Upload File: <span>*</span></label>
                                 <input name="images" type="file" id="image-name" multiple="multiple" />

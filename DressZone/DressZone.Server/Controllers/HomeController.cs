@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private IHomePageService indexService;
 
@@ -20,13 +20,23 @@
         {
             var resultCategories = this.indexService.GetTopCategories().To<HomeCategoryDTO>().ToList();
 
-            var resultProducts = this.indexService.GetTopProducts().To<HomeProductDTO>().ToList();
+
+            var resultProducts = this.indexService.GetTopProducts().Select(p => new HomeProductDTO
+            {
+                Id = p.Id,
+                CategoryName = p.Category.Name,
+                FileName = p.Images.AsQueryable().Where(i => i.ProductId == p.Id).FirstOrDefault().FileName,
+                Price = p.Price,
+                Title = p.Title,
+                Discount = p.Discount
+            });
+            //this.indexService.GetTopProducts().To<HomeProductDTO>().ToList();
 
             var resultDTO = new HomePageDTO { categories = resultCategories, products = resultProducts };
 
             return View(resultDTO);
         }
 
-        
+
     }
 }

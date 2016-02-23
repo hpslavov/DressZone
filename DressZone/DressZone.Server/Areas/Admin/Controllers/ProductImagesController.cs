@@ -49,9 +49,9 @@
             this.images.SaveImageRecord(productImages);
 
             var latestImages = this.images.GetLatest();
-            this.products.SaveImagesToProduct(latestImages, product);
-
-            return RedirectToAction("All");
+            this.products.SaveImagesToProduct(productImages, product);
+            
+            return RedirectToAction("Index","Home",new { area = string.Empty });
         }
     }
 }

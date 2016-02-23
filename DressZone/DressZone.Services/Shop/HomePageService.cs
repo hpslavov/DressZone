@@ -21,13 +21,13 @@
 
         public IQueryable<Category> GetTopCategories()
         {
-            var categories = this.categories.All().OrderBy(x => Guid.NewGuid()).Take(3);
+            var categories = this.categories.All().Where(x => x.IsDeleted != true).OrderBy(x => Guid.NewGuid()).Take(3);
             return categories;
         }
 
         public IQueryable<Product> GetTopProducts()
         {
-            var products = this.products.All().OrderBy(x => Guid.NewGuid()).Take(4);
+            var products = this.products.All().Where(x => x.IsDeleted != true).OrderBy(x => Guid.NewGuid()).Take(4);
             return products;
         }
 
