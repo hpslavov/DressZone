@@ -25,6 +25,8 @@
     <script src="~/Scripts/themeScripts/jquery-1.11.0.min.js"></script>
     <script src="~/Scripts/themeScripts/jquery-migrate-1.2.1.min.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("kendo", required: false)
+
 
     @* @Scripts.Render("~/bundles/jquery11")*@
     @* @Scripts.Render("~/bundles/jquerymigrate")*@
@@ -49,7 +51,6 @@
         ================================================== -->
         @Html.Partial("Header")
 
-        @RenderSection("kendo", required: false)
 
         <!-- Navigation
         ================================================== -->

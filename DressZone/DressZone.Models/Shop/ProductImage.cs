@@ -13,15 +13,13 @@
             this.CreatedOn = DateTime.Now;
         }
 
-        [Key]
         public int Id { get; set; }
 
         public int ProductId { get; set; }
 
-        [Column("Product Name")]
         public virtual Product Product { get; set; }
 
-        [Column("Extension")]
+        [MaxLength(200)]
         public string ContentType { get; set; }
 
         public bool IsFrontImage { get; set; }
@@ -32,8 +30,10 @@
         [NotMapped]
         public int ContentLength { get; set; }
 
+        [MaxLength(150)]
         public string FileName { get; set; }
 
+        [MaxLength(130)]
         public string CategoryName { get; set; }
 
         public DateTime? CreatedOn { get; set; }

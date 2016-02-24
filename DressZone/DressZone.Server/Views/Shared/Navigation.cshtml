@@ -11,49 +11,7 @@
                 <li class="dropdown">
                     <a href="#">Shop</a>
                     <ul>
-                        <li><a href="shop-with-sidebar.html">Shop With Sidebar</a></li>
-                        <li><a href="shop-full-width.html">Shop Full Width</a></li>
-                        <li><a href="checkout-billing-details.html">Checkout Pages</a></li>
-                        <li><a href="shop-categories-grid.html">Categories Grid</a></li>
-                        <li><a href="single-product-page.html">Single Product Page</a></li>
-                        <li><a href="variable-product-page.html">Variable Product Page</a></li>
-                        <li><a href="wishlist.html">Wishlist Page</a></li>
-                        <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                    </ul>
-                </li>
-
-
-
-
-
-                <li class="dropdown">
-                    <a href="#">Shortcodes</a>
-                    <ul>
-                        <li><a href="elements.html">Elements</a></li>
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="pricing-tables.html">Pricing Tables</a></li>
-                        <li><a href="icons.html">Icons</a></li>
-                    </ul>
-                </li>
-
-
-                <li class="dropdown">
-                    <a href="#">Portfolio</a>
-                    <ul>
-                        <li><a href="portfolio-3-columns.html">3 Columns</a></li>
-                        <li><a href="portfolio-4-columns.html">4 Columns</a></li>
-                        <li><a href="portfolio-dynamic-grid.html">Dynamic Grid</a></li>
-                        <li><a href="single-project.html">Single Project</a></li>
-                    </ul>
-                </li>
-
-
-                <li class="dropdown">
-                    <a href="#">Blog</a>
-                    <ul>
-                        <li><a href="blog-standard.html">Blog Standard</a></li>
-                        <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                        <li><a href="blog-single-post.html">Single Post</a></li>
+                        <li>@Html.ActionLink("Categories","Details","CategoriesDetails",new { area = "" })</li>
                     </ul>
                 </li>
 
@@ -76,6 +34,8 @@
                                     <ul>
                                         <li><span class="mega-headline">Manage Products</span></li>
                                         <li>@Html.ActionLink("ManageAll", "All", "ProductsCreate", new { area = "Admin" }, null)</li>
+                                        <li>@Html.ActionLink("AddImages", "AddImages", "ProductImages", new { area = "Admin" }, null)</li>
+
                                     </ul>
                                 </div>
                                 <div class="one-column">
@@ -86,7 +46,9 @@
                                 </div>
                                 <div class="one-column">
                                     <ul>
-                                        <li><span class="mega-headline">Manage Sales</span></li>
+                                        <li><span class="mega-headline">Manage Carts</span></li>
+                                        <li>@Html.ActionLink("ManageAll", "All", "Cart", new { area = "Admin" }, null)</li>
+
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>

@@ -1,0 +1,94 @@
+﻿@model List<DressZone.Server.Models.DTO.CategoriesDetails.SingleCategoryDTO>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>All Available Categories</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li>Dynamic Grid</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<!-- Content
+================================================== -->
+<!-- Container -->
+<div class="container">
+
+    <!-- Filters -->
+    <div class="sixteen columns">
+        <div id="filters" class="filters-dropdown">
+            <ul class="option-set">
+                <li class="active"><a href="#filter" class="selected" data-filter="*">All</a></li>
+                @for (var i = 0; i < Model.Count(); i++)
+                {
+                    <li><a href="#filter" data-filter=".@Model[i].Name">@Model[i].Name</a></li>
+                }
+
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <ul id="og-grid" class="og-grid">
+        @for (var i = 0; i < Model.Count();i++)
+        {
+             <!-- Project -->
+            <li class="@Model[i].Name others clickable">
+
+                <a href="#" class="grid-item-image">
+                    <div class="dynamic-portfolio-holder">
+                        <img src="~/images/Uploaded/Categories/@Model[i].FrontImageName" alt="@Model[i].FrontImageName" />
+                        <div class="hover-cover"></div>
+                        <div class="hover-icon"></div>
+                        <div class="hover-desc">
+                            <h5>@Model[i].Name</h5>
+                            <span>Clothing</span>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="og-expander">
+                    <div class="flexslider gridslider">
+                        <ul class="slides">
+                            <li><img src="~/images/Uploaded/Categories/@Model[i].FrontImageName" alt="@Model[i].FrontImageName"></li>
+                        </ul>
+                    </div>
+
+                    <span class="og-close"></span>
+                    <div class="og-details">
+                        <h3>@Model[i].Name</h3>
+                        <p>@Model[i].Description</p>
+                        <p></p>
+
+                        <!-- Share Buttons -->
+                        <div class="share-buttons">
+                            <ul>
+                                <li><a href="/CategoryDetails/Details/@Model[i].Id">Explore</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+        }
+
+
+    </ul>
+
+</div>
+<!-- Container / End -->
+
+<div class="margin-top-30"></div>

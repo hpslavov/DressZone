@@ -9,15 +9,15 @@
     <div class="eight columns">
         <div class="slider-padding">
             <div id="product-slider" class="royalSlider rsDefault">
-                <img class="rsImg" src="" data-rsTmb="" alt="" id=""/>
-                <img class="rsImg" src="images/product_item_02a.jpg" data-rsTmb="images/product_item_thumb_02a.png" alt="" />
-                <img class="rsImg" src="images/product_item_03a.jpg" data-rsTmb="images/product_item_thumb_03a.png" alt="" />
-                <img class="rsImg" src="images/product_item_01b.jpg" data-rsTmb="images/product_item_thumb_01b.png" alt="" />
-                <img class="rsImg" src="images/product_item_02b.jpg" data-rsTmb="images/product_item_thumb_02b.png" alt="" />
-                <img class="rsImg" src="images/product_item_03b.jpg" data-rsTmb="images/product_item_thumb_03b.png" alt="" />
-                <img class="rsImg" src="images/product_item_01c.jpg" data-rsTmb="images/product_item_thumb_01c.png" alt="" />
-                <img class="rsImg" src="images/product_item_02c.jpg" data-rsTmb="images/product_item_thumb_02c.png" alt="" />
-                <img class="rsImg" src="images/product_item_03c.jpg" data-rsTmb="images/product_item_thumb_03c.png" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" id="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
+                <img class="rsImg" src="" data-rsTmb="" alt="" />
             </div>
             <div class="clearfix"></div>
         </div>
@@ -40,22 +40,23 @@
                     <fieldset>
                         <div class="row">
                             <div class="col-md-5">
-                                <input type="hidden" value="@Model.ProductId" name="ProductId" />
-                                <input type="hidden" id="category" value="@Model.CategoryName" name="CategoryName" />
-
-                                <label>Product Name:<strong>@Model.Title</strong></label>
-                                <label>Product Category:<strong>@Model.CategoryName</strong></label>
+                                <label>Product Id:<strong></strong></label><br />
+                                <input type="number" value="@Model.ProductId" name="ProductId" /><br />
+                                <label>Product Category:<strong>@Model.CategoryName</strong></label><br />
+                                <input type="text" id="category" value="@Model.CategoryName" name="CategoryName" /><br />
 
                                 <label>Upload File: <span>*</span></label>
                                 <input name="images" type="file" id="image-name" multiple="multiple" />
                             </div>
-
+                            <div class="col-md-5">
+                                <div id="image-holder"></div>
+                            </div>
                         </div>
 
 
 
                     </fieldset>
-                        <div id="result"></div>
+                    <div id="result"></div>
                         <input type="submit" id="submit" value="Add Image" />
                         <div class="clearfix"></div>
                 }
@@ -77,56 +78,46 @@
 
 @section scripts{
     <script>
-            //$('#image-name').on('change', function () {
-            //    var imageName = $('#image-name').val();
-            //    var directoryName = $('#category').val();
-            //    var cleanedName = getImageName(imageName);
-            //    var urlImage = "/images/Uploaded/";
-            //    var imageHolder = $('#product-slider');
-            //    var files = $('#image-name')[0].files;
-
-            //    for (var i = 0; i < files.length; i++) {
-            //        var currentUrl = urlImage + files[i].name;
-            //        $.ajax({
-            //            url: currentUrl,
-            //            method: "GET",
-            //            contentType: "text/html",
-            //            success: function (data) {
-            //                console.log(currentUrl);
-            //                console.log(data);
-            //                $('#1').attr('src', currentUrl).attr('data-rsTmb',currentUrl);
-            //                //$('<img />', {
-            //                //    'src': currentUrl,
-            //                //    'data-rsTmb': currentUrl,
-            //                //    'style': 'width:150px; height:140px;',
-            //                //    'class': 'rsImg'
-            //                //}).appendTo(imageHolder);
-            //            }
-            //        });
-            //    }
-
-            //    //imageHolder.empty();
-            //    //$.ajax({
-            //    //    url: urlImage,
-            //    //    method: "GET",
-            //    //    contentType: "text/html",
-            //    //    success: function (data) {
-            //    //        $('<img />', {
-            //    //            'src': urlImage,
-            //    //            'data-rsTmb': urlImage,
-            //    //            'style': 'width:150px; height:140px;',
-            //    //            'class': 'rsImage'
-            //    //        }).appendTo(imageHolder);
-            //    //    }
-            //    //});
-            //})
+        $('#image-name').on('change', function () {
+            var imageName = $('#image-name').val();
+            var cleanedName = getImageName(imageName);
+            var urlImage = "/images/Uploaded/" + imageName;
+            var imageHolder = $('#product-slider');
+            imageHolder.empty();
+            $.ajax({
+                url: urlImage,
+                method: "GET",
+                contentType: "text/html",
+                success: function (data) {
+                    $('<img />', {
+                        'src': urlImage,
+                        'class': 'rsImg'
+                    }).appendTo(imageHolder);
+                }
+            });
+        })
 
 
-            //function getImageName(name) {
-            //    var delta = 'C:\\fakepath\\';
-            //    var result = name.substring(delta.length);
-            //    return result;
-            //}
+        function getImageName(name) {
+            var delta = 'C:\\fakepath\\';
+            var result = name.substring(delta.length);
+            return result;
+        }
+
+        //$('#ProductId').blur(function () {
+        //    var productId = $('#ProductId').val();
+        //    console.log(productId);
+        //    var url = '/ProductsInfo/GetProductInfo/' + productId;
+        //    $.ajax({
+        //        url: url,
+        //        method: 'GET',
+        //        data: {productId : productId},
+        //        contentType: 'application/json',
+        //        success: function (data) {
+        //            console.log(data);
+        //        }
+        //    });
+        //});
 
     </script>
 }

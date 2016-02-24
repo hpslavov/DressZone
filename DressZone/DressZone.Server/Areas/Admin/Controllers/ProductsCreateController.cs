@@ -26,11 +26,10 @@ namespace DressZone.Server.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        [OutputCache(Duration = 3000)]
         public ActionResult All()
         {
             ViewData["Colors"] = this.products.GetColorNames();
-            ViewData["Categories"] = this.products.GetCategoryNames();
+            ViewData["Category"] = this.products.GetCategoryNames();
             ViewData["Sizes"] = this.products.GetSizesNames();
             ViewData["Genders"] = this.products.GetGenderNames();
 
@@ -40,8 +39,6 @@ namespace DressZone.Server.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult All([DataSourceRequest]DataSourceRequest productsModel)
         {
-            
-
             var allProducts = this.products
                                     .GetAllWithDeleted()
                                     .To<GridCreateProductViewModel>()

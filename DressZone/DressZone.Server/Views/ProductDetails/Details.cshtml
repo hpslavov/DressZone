@@ -1,0 +1,224 @@
+﻿@model DressZone.Server.Models.DTO.ProductDetails.SingleProductDTO
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <!-- Slider
+    ================================================== -->
+    <div class="eight columns">
+        <div class="slider-padding">
+            <div id="product-slider-vertical" class="royalSlider rsDefault">
+                @foreach (var img in Model.Images)
+                {
+                    <a href="#" class="mfp-gallery" title="First Title"><img class="rsImg" src="~/images/Uploaded/@img.CategoryName/@img.FileName" /></a>
+                }
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+    <!-- Content
+    ================================================== -->
+    <div class="eight columns">
+        <div class="product-page">
+
+            <!-- Headline -->
+            <section class="title">
+                <h2>@Model.Title</h2>
+                <span class="product-price">$@Model.Price</span>
+            </section>
+
+            <!-- Text Parapgraph -->
+            <section>
+                <p class="margin-reset">@Model.Description</p>
+
+                <!-- Share Buttons -->
+                <div class="share-buttons">
+                    <ul>
+                        <li><a href="#"></a></li>
+                        <li class="share-facebook"><a href="#"></a></li>
+                        <li class="share-twitter"><a href="#"></a></li>
+                        <li class="share-gplus"><a href="#"> </a></li>
+                        <li class="share-pinit"><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+
+            </section>
+
+            @if (this.Request.IsAuthenticated)
+            {
+                <section class="linking">
+
+                    <form action='#'>
+                        <div class="qtyminus"></div>
+                        <input type='text' name="quantity" value='1' class="qty" />
+                        <div class="qtyplus"></div>
+                    </form>
+                    <input type="hidden" id="productId" value="@Model.Id"/>
+                    <button href="" id="addToCart" class="button adc">Add to Cart</button>
+                    <div class="clearfix"></div>
+                   <div id="msg"></div>
+                </section>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <div class="sixteen columns">
+        <!-- Tabs Navigation -->
+        <ul class="tabs-nav">
+            <li class="active"><a href="#tab1">@Model.Category.Name Category</a></li>
+            <li><a href="#tab2">Additional Information</a></li>
+            <li><a href="#tab3">Reviews <span class="tab-reviews">(0)</span></a></li>
+        </ul>
+
+        <!-- Tabs Content -->
+        <div class="tabs-container">
+
+            <div class="tab-content" id="tab1">
+                <p>@Model.Category.Description</p>
+            </div>
+
+            <div class="tab-content" id="tab2">
+
+                <table class="basic-table">
+                    <tr>
+                        <th>Material</th>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <th>Weight</th>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <th>Size</th>
+                        <td></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="tab-content" id="tab3">
+
+                <!-- Reviews -->
+                <section class="comments">
+                    <p class="margin-bottom-10">There are no reviews yet.</p>
+
+                    <a href="#small-dialog" class="popup-with-zoom-anim button color margin-left-0">Add Review</a>
+
+                    <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+                        <h3 class="headline">Add Review</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+
+                        <!-- Form -->
+                        <form id="add-comment" class="add-comment">
+                            <fieldset>
+
+                                <div>
+                                    <label>Name:</label>
+                                    <input type="text" value="" />
+                                </div>
+
+                                <div>
+                                    <label>Rating:</label>
+                                    <span class="rate">
+                                        <span class="star"></span>
+                                        <span class="star"></span>
+                                        <span class="star"></span>
+                                        <span class="star"></span>
+                                        <span class="star"></span>
+                                    </span>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="margin-top-20">
+                                    <label>Email: <span>*</span></label>
+                                    <input type="text" value="" />
+                                </div>
+
+                                <div>
+                                    <label>Review: <span>*</span></label>
+                                    <textarea cols="40" rows="3"></textarea>
+                                </div>
+
+                            </fieldset>
+
+                            <a href="#" class="button color">Add Review</a>
+                            <div class="clearfix"></div>
+
+                        </form>
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Related Products -->
+<div class="container margin-top-5">
+
+    <!-- Headline -->
+    <div class="sixteen columns">
+        <h3 class="headline">Related Products</h3>
+        <span class="line margin-bottom-0"></span>
+    </div>
+
+    <!-- Products -->
+    <div class="products">
+
+        <!-- Product #1 -->
+        <div class="four columns">
+            <figure class="product">
+                <div class="mediaholder">
+                    <a href="#">
+                        <img alt="" src="images/shop_item_01.jpg" />
+                        <div class="cover">
+                            <img alt="" src="images/shop_item_01_hover.jpg" />
+                        </div>
+                    </a>
+                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                </div>
+
+                <a href="#">
+                    <section>
+                        <span class="product-category">Skirts</span>
+                        <h5>Brown Mini Skirt</h5>
+                        <span class="product-price">$79.00</span>
+                    </section>
+                </a>
+            </figure>
+        </div>
+
+    </div>
+</div>
+
+<div class="margin-top-50"></div>
+@section scripts {
+    <script>
+        var prId = $('#productId').val();
+        console.log(prId);
+        $('#addToCart').on('click', function () {
+            $.ajax({
+                method: 'POST',
+                datatype : 'json',
+                url: '/UserCart/AddItem/'+prId,
+                data: { productId : prId },
+                success: function (data) {
+                    $('#msg').val('Added to cart');
+                }
+            })
+        })
+    </script>
+    }

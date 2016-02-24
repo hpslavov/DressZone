@@ -9,12 +9,14 @@
     {
         private ICollection<CategoryImage> images;
 
-        public Category(): base()
+        public Category()
         {
             this.images = new List<CategoryImage>();
             this.CreatedOn = DateTime.Now;
         }
         public int Id { get; set; }
+
+        [MaxLength(150)]
         public string Description { get; set; }
 
         [Required]

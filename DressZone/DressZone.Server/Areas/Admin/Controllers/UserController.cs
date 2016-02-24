@@ -38,7 +38,7 @@ namespace DressZone.Server.Areas.Admin.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-
+                return Json(new[] { categoriesModel }.ToDataSourceResult(categoriesModel));
             }
             var allUsers = this.userService.GetAll().To<GridViewUserViewModel>().ToList();
             foreach (var user in allUsers)
@@ -57,6 +57,10 @@ namespace DressZone.Server.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult UpdateExisting([DataSourceRequest]DataSourceRequest request, GridViewUserViewModel userModel)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return Json(new[] { userModel }.ToDataSourceResult(request));
+            }
             var currentRole = this.userService.GetRole(userModel.Email);
             var userFromDb = userService.GetByEmail(userModel.Email);
 
@@ -80,9 +84,6 @@ namespace DressZone.Server.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete([DataSourceRequest]DataSourceRequest request, GridViewUserViewModel categoryModel)
         {
-            if (categoryModel != null)
-            {
-            }
             var userToDelete = this.userService.GetByEmail(categoryModel.Email);
             var deletedUser = this.userService.Delete(userToDelete);
             var result = new[] { deletedUser }.ToDataSourceResult(request, ModelState);

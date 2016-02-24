@@ -20,7 +20,7 @@ namespace DressZone.Server.Models.DTO.Home
         public void CreateMappings(IMapperConfiguration configuration)
         {
             Mapper.CreateMap<Product, HomeProductDTO>()
-                .ForMember(x => x.FileName, opts => opts.MapFrom(src => src.Images.FirstOrDefault().FileName));
+                .ForMember(x => x.FileName, opts => opts.MapFrom(p => p.Images.AsQueryable().Where(i => i.ProductId == p.Id).FirstOrDefault().FileName));
         }
     }
 }

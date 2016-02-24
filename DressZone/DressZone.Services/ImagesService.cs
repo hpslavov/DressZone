@@ -80,7 +80,7 @@
         {
             var path = this.filePathFileSystem + @"DressZone.Server\images\Uploaded\Categories\" + fileName;
 
-            File.WriteAllBytes(this.filePathFileSystem + path + fileName, imageBytes);
+            File.WriteAllBytes(path, imageBytes);
         }
     
         private byte[] ImageToByteArraybyMemoryStream(Image image)
