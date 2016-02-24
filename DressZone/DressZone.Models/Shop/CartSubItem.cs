@@ -17,6 +17,8 @@
         public int Id { get; set; }
         public int Quantity { get; set; }
 
+        public virtual ICollection<Product> Products { get; set; }
+
         public decimal CartSubItemTotal { get; set; }
 
         public DateTime? CreatedOn { get; set; }

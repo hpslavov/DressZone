@@ -27,6 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressZone.Services", "DressZone.Services\DressZone.Services.csproj", "{06512B96-996A-4872-9FCA-915DE2DAE254}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{99846406-04B0-4648-B3D0-0BE0DE85E4E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressZone.Web.RouteTests", "DressZone.Web.RouteTests\DressZone.Web.RouteTests.csproj", "{E472D23B-4B5B-4E2D-8889-7F88B24BA564}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{06512B96-996A-4872-9FCA-915DE2DAE254}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06512B96-996A-4872-9FCA-915DE2DAE254}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06512B96-996A-4872-9FCA-915DE2DAE254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E472D23B-4B5B-4E2D-8889-7F88B24BA564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E472D23B-4B5B-4E2D-8889-7F88B24BA564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E472D23B-4B5B-4E2D-8889-7F88B24BA564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E472D23B-4B5B-4E2D-8889-7F88B24BA564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +75,6 @@ Global
 		{ADA113E4-7DB6-4E56-9180-269B55200997} = {A0B1D2C9-ECE3-425D-A7CD-DE9E9403AB03}
 		{F0068BEA-01B1-4554-9A5C-93D11080CC2E} = {B6AF3941-47BB-4BCD-A8C2-CECBFC0ECE79}
 		{06512B96-996A-4872-9FCA-915DE2DAE254} = {9FB3CFE6-83B9-4E0E-B083-27227E7AB2CD}
+		{E472D23B-4B5B-4E2D-8889-7F88B24BA564} = {99846406-04B0-4648-B3D0-0BE0DE85E4E1}
 	EndGlobalSection
 EndGlobal

@@ -58,10 +58,10 @@
                         <input type='text' name="quantity" value='1' class="qty" />
                         <div class="qtyplus"></div>
                     </form>
-
-                    <a href="#" class="button adc">Add to Cart</a>
+                    <input type="hidden" id="productId" value="@Model.Id"/>
+                    <button href="" id="addToCart" class="button adc">Add to Cart</button>
                     <div class="clearfix"></div>
-
+                   <div id="msg"></div>
                 </section>
             }
 
@@ -205,3 +205,20 @@
 </div>
 
 <div class="margin-top-50"></div>
+@section scripts {
+    <script>
+        var prId = $('#productId').val();
+        console.log(prId);
+        $('#addToCart').on('click', function () {
+            $.ajax({
+                method: 'POST',
+                datatype : 'json',
+                url: '/UserCart/AddItem/'+prId,
+                data: { productId : prId },
+                success: function (data) {
+                    $('#msg').val('Added to cart');
+                }
+            })
+        })
+    </script>
+    }

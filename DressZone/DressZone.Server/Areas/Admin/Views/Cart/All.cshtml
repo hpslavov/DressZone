@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section kendo {
+    @Scripts.Render("~/bundles/kendo")
+}
+<div>
+    @(Html.Kendo().Grid<DressZone.Server.Areas.Admin.Models.ViewModels.Carts.AllCartsGridViewModel>()
+                    .Name("grid")
+                            .Columns(columns =>
+                            {
+                                columns.Bound(c => c.Id);
+                                columns.Bound(c => c.IsCheckedOut);
+                                columns.Bound(c => c.SubTotal);
+                                columns.Bound(c => c.Total);
+                                columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy HH:MM:ss}");
+                                columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:mm:ss}");
+                                columns.Command(command =>
+                                {
+                                    command.Edit();
+                                    command.Destroy();
+                                });
+                            })
+                            .Sortable()
+                            .Pageable(pager =>
+                                     pager.Refresh(true))                            
+                            .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                            .DataSource(datasource =>
+                                   datasource
+                                     .Ajax()
+                                     .PageSize(10)
+                                     .Model(m => m.Id(c => c.Id))
+                                     .Read(read => read.Action("All", "Cart", new { area = "Admin" }))
+                                     .Update(update => update.Action("UpdateExisting", "Cart", new { area = "Admin" }))
+                                     .Destroy(destroy => destroy.Action("Delete", "Cart", new { area = "Admin" }))))
+
+
+</div>

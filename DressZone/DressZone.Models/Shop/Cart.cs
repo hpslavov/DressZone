@@ -31,6 +31,8 @@
 
         public decimal Total { get; set; }
 
+        public int SubItemsId { get; set; }
+
         public virtual ICollection<CartSubItem> SubItems
         {
             get { return this.subItems; }

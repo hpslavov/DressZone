@@ -1,5 +1,6 @@
 ﻿using DressZone.Server.Infrastructure.Mapping.Contracts;
 using DressZone.Server.Models.DTO.CategoriesDetails;
+using DressZone.Server.Models.DTO.ProductDetails;
 using DressZone.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace DressZone.Server.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var productFromDb = this.productsService.GetCurrentProduct(id).To<SingleCategoryDTO>().FirstOrDefault();
+            var productFromDb = this.productsService.GetCurrentProduct(id).To<SingleProductDTO>().FirstOrDefault();
             return View(productFromDb);
         }
     }
