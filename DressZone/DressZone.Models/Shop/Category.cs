@@ -15,6 +15,8 @@
             this.CreatedOn = DateTime.Now;
         }
         public int Id { get; set; }
+
+        [MaxLength(150)]
         public string Description { get; set; }
 
         [Required]

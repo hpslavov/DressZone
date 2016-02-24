@@ -19,6 +19,7 @@
 
         public virtual Product Product { get; set; }
 
+        [MaxLength(200)]
         public string ContentType { get; set; }
 
         public bool IsFrontImage { get; set; }
@@ -29,8 +30,10 @@
         [NotMapped]
         public int ContentLength { get; set; }
 
+        [MaxLength(150)]
         public string FileName { get; set; }
 
+        [MaxLength(130)]
         public string CategoryName { get; set; }
 
         public DateTime? CreatedOn { get; set; }
