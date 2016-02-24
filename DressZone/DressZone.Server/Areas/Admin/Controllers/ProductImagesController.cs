@@ -50,9 +50,10 @@
 
             var latestImages = this.images.GetLatest();
             this.products.SaveImagesToProduct(productImages, product);
-            
-            return RedirectToAction("Index","Home",new { area = string.Empty });
+
+            return RedirectToAction("Index", "Home", new { area = string.Empty });
         }
+
 
     }
 }

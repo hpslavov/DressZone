@@ -13,15 +13,12 @@
             this.CreatedOn = DateTime.Now;
         }
 
-        [Key]
         public int Id { get; set; }
 
         public int ProductId { get; set; }
 
-        [Column("Product Name")]
         public virtual Product Product { get; set; }
 
-        [Column("Extension")]
         public string ContentType { get; set; }
 
         public bool IsFrontImage { get; set; }
